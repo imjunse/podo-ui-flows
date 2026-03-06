@@ -1,0 +1,197 @@
+# 포도앱 개선 워크플로우
+
+```mermaid
+flowchart TD
+    %% ===== 외부 진입 =====
+    subgraph ENTRY["외부 진입점"]
+        E1[앱 설치 배너]
+        E2[브라우저에서 열기]
+        E3[QR 스토어]
+        E4[앱에서 열기]
+        E5[푸시 알림]
+        E6[딥링크]
+    end
+
+    %% ===== 딥링크 라우터 =====
+    ENTRY --> DLR{딥링크 라우터}
+    DLR -->|인증 필요| AUTH
+    DLR -->|인증 완료 + 딥링크 타겟 있음| TARGET([타겟 화면으로 직행])
+    DLR -->|인증 완료 + 타겟 없음| HOME
+
+    %% ===== 인증 =====
+    subgraph AUTH["인증"]
+        LOGIN[Login] --> OAUTH[OAuth Redirect]
+        OAUTH -->|성공| HOME
+        OAUTH -->|실패| AUTH_ERR[인증 실패 안내]
+        AUTH_ERR -->|재시도| LOGIN
+    end
+
+    %% ===== 온보딩 (최초 1회) =====
+    HOME --> OB_CHECK{첫 방문?}
+    OB_CHECK -->|Yes| ONBOARD
+    OB_CHECK -->|No| TABS
+
+    subgraph ONBOARD["온보딩 (최초 1회)"]
+        OB1[레벨 테스트] --> OB2[레벨 선택]
+        OB2 --> OB3[첫 수업 부스터 안내]
+    end
+    ONBOARD --> TABS
+
+    %% ===== 통합 홈 & 탭 =====
+    subgraph TABS["Bottom Tab Navigator"]
+        direction LR
+        TAB_HOME["🏠 홈"]
+        TAB_CLASS["📚 수업"]
+        TAB_MY["👤 마이"]
+    end
+
+    %% ===== 홈 (통합) =====
+    TAB_HOME --> HOME_UNIFIED
+
+    subgraph HOME_UNIFIED["홈 (통합 - 동적 렌더링)"]
+        direction TB
+        H_BANNER[배너 / 공지]
+        H_UPCOMING[예약된 수업 바로가기]
+        H_SMART[Smart Talk 섹션]
+        H_AI[AI Learning 섹션]
+        H_BASIC[일반 수업 섹션]
+    end
+
+    H_UPCOMING -->|수업 시작| CLASS_LIVE
+    H_SMART --> SMART_TALK
+    H_AI --> AI_LEARNING
+
+    %% ===== 수업 탭 =====
+    TAB_CLASS --> CLASS_HUB
+
+    subgraph CLASS_HUB["수업 허브"]
+        direction TB
+        C_REGULAR[정규 수업 목록]
+        C_TRIAL[체험 수업 목록]
+        C_AI_LIST[AI 수업 목록]
+        C_STATS[수업 통계]
+    end
+
+    subgraph CLASS_LIVE["수업 진행"]
+        direction TB
+        CL_SESSION[수업 세션] --> CL_CANVAS[드로잉 캔버스]
+        CL_SESSION --> CL_REVIEW[수업 리뷰]
+        CL_REVIEW --> CL_REPORT[AI 체험 리포트]
+        CL_REVIEW --> CL_METRICS[지표 현황]
+        CL_SESSION --> CL_END[수업 마감]
+    end
+
+    C_REGULAR --> CLASS_LIVE
+    C_TRIAL --> CLASS_LIVE
+    C_AI_LIST --> AI_LEARNING
+
+    subgraph SMART_TALK["Smart Talk"]
+        ST_CHAT[채팅 수업]
+        ST_LIST[채팅 스마트톡 목록]
+        ST_DETAIL[채팅 스마트톡 상세]
+        ST_LIST --> ST_DETAIL
+    end
+
+    subgraph AI_LEARNING["AI Learning"]
+        AI_CLASS[AI 수업 상세]
+        AI_REPORT[AI 체험 리포트]
+        AI_CLASS --> AI_REPORT
+    end
+
+    %% ===== 마이 탭 (관심사 분리) =====
+    TAB_MY --> MY_HUB
+
+    subgraph MY_HUB["마이페이지"]
+        direction TB
+        MY_PROFILE[프로필 / 달링 설정]
+        MY_LEARNING[학습 히스토리]
+        MY_SHOP[상점]
+        MY_SETTINGS[설정]
+    end
+
+    subgraph MY_LEARNING_DETAIL["학습 관리"]
+        ML_PROGRESS[진도율]
+        ML_LEVEL[레벨 테스트 결과]
+        ML_TUTORS[튜터 제로]
+    end
+    MY_LEARNING --> MY_LEARNING_DETAIL
+
+    subgraph MY_SHOP_DETAIL["상점"]
+        MS_BADGE[배지]
+        MS_COUPON[쿠폰]
+        MS_ITEMS[내 물건]
+        MS_BADGE --> MS_BADGE_DETAIL[배지 상세]
+        MS_COUPON --> MS_COUPON_DETAIL[쿠폰 상세]
+        MS_ITEMS --> MS_ITEMS_DETAIL[물건 상세]
+    end
+    MY_SHOP --> MY_SHOP_DETAIL
+
+    subgraph MY_SETTINGS_DETAIL["설정"]
+        SET_NOTICE[공지사항]
+        SET_NOTICE --> SET_NOTICE_DETAIL[공지 상세]
+        SET_PAY[결제 수단 관리]
+    end
+    MY_SETTINGS --> MY_SETTINGS_DETAIL
+
+    %% ===== 통합 결제 모듈 =====
+    subgraph PAYMENT["💳 결제 모듈 (공통)"]
+        direction TB
+        PAY_PLANS[수강권 목록]
+        PAY_PLANS --> PAY_PLAN_V2[수강권 V2]
+        PAY_PLANS --> PAY_SMART[스마트톡 수강권]
+        PAY_PLANS --> PAY_BAEWEO[배워 수강권]
+        PAY_PLAN_V2 --> PAY_PAGE[결제 페이지]
+        PAY_SMART --> PAY_PAGE
+        PAY_BAEWEO --> PAY_PAGE
+        PAY_PAGE --> PAY_DONE[결제 완료 ✅]
+        PAY_PAGE --> PAY_FAIL[결제 실패 ❌]
+        PAY_FAIL -->|재시도| PAY_PAGE
+    end
+
+    %% 결제 진입점들 (여러 곳에서 호출)
+    H_UPCOMING -.->|수강권 필요| PAYMENT
+    CLASS_HUB -.->|수강권 구매| PAYMENT
+    SET_PAY -.->|결제 수단 등록| PAYMENT
+    MS_COUPON_DETAIL -.->|쿠폰 적용| PAYMENT
+
+    %% ===== 스타일 =====
+    style AUTH fill:#c0392b,color:#fff
+    style PAYMENT fill:#27ae60,color:#fff
+    style HOME_UNIFIED fill:#2980b9,color:#fff
+    style CLASS_LIVE fill:#e67e22,color:#fff
+    style ONBOARD fill:#8e44ad,color:#fff
+    style ENTRY fill:#7f8c8d,color:#fff
+
+    classDef errorNode fill:#e74c3c,color:#fff
+    class AUTH_ERR,PAY_FAIL errorNode
+```
+
+## 주요 변경점
+
+### 1. 딥링크 라우터 추가
+- 모든 외부 진입 → 딥링크 라우터 → 인증 체크 → 타겟 화면 or 홈
+- 푸시 알림, 딥링크 진입점 추가
+
+### 2. 홈 통합 (3개 → 1개)
+- Home(Basic), Home(Smart Talk), AI Learning → **통합 홈**
+- 수강권 상태에 따라 섹션을 동적으로 보여줌
+- "예약된 수업 바로가기"로 수업 시작까지 1탭
+
+### 3. 결제 모듈 통합
+- 배지 플로우의 결제수단 + 구독결제 → **하나의 결제 모듈**
+- 점선(-.->)으로 여러 곳에서 호출 가능하게 표현
+- 결제 실패 → 재시도 플로우 추가
+
+### 4. 마이페이지 관심사 분리
+- 학습 관리: 진도율, 레벨, 튜터
+- 상점: 배지, 쿠폰, 물건
+- 설정: 공지, 결제수단
+
+### 5. 온보딩 분리
+- 레벨 테스트 / 첫 수업 부스터 → 최초 1회 온보딩으로 분리
+- 이후 접속 시 바이패스
+
+### 6. 에러 플로우 추가
+- 인증 실패 → 재시도
+- 결제 실패 → 재시도
+- 빨간색으로 에러 노드 표시

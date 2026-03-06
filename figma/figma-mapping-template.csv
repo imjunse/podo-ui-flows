@@ -1,0 +1,37 @@
+화면명,라우트,md파일,Figma URL,상태
+Home,/home,home.md,,TODO
+Home (AI),/home/ai,home.md,,TODO
+수업 탐색,/subscribes,subscribes.md,,TODO
+수강권 목록,/subscribes/tickets,tickets.md,,TODO
+수강권 V2,/subscribes/tickets-v2,tickets.md,,TODO
+스마트톡 수강권,/subscribes/tickets/smart-talk,tickets.md,,TODO
+페이백 수강권,/subscribes/tickets/payback,tickets.md,,TODO
+체험 수업,/subscribes/trial,lessons-trial.md,,TODO
+체험 스마트톡,/subscribes/trial/smart-talk,lessons-trial.md,,TODO
+결제 페이지,/subscribes/payment/[id],payment.md,,TODO
+결제 완료,/subscribes/payment/[id]/success,payment-success.md,,TODO
+예약,/reservation,reservation.md,,TODO
+정규 수업 목록,/lessons/regular,lessons-regular.md,,TODO
+체험 수업 목록,/lessons/trial,lessons-trial.md,,TODO
+AI 수업 목록,/lessons/ai,lessons-ai.md,,TODO
+수업 진행,/lessons/classroom/[id],classroom.md,,TODO
+드로잉,/drawing/[id],drawing.md,,TODO
+수업 리뷰,/lessons/classroom/[id]/review,review.md,,TODO
+리뷰 완료,/lessons/classroom/[id]/review-complete,review-complete.md,,TODO
+수업 리포트,/lessons/classroom/[id]/report,class-report.md,,TODO
+AI Learning,/ai-learning,ai-learning.md,,TODO
+마이포도,/my-podo,my-podo.md,,TODO
+쿠폰,/my-podo/coupon,coupon.md,,TODO
+쿠폰 상세,/my-podo/coupon/[id],coupon.md,,TODO
+결제 수단,/my-podo/payment-methods,payment-methods.md,,TODO
+결제 수단 등록,/my-podo/payment-methods/register,payment-methods.md,,TODO
+내 플랜,/my-podo/plan,plan.md,,TODO
+플랜 상세,/my-podo/plan/[id],plan.md,,TODO
+공지사항,/my-podo/notices,notices.md,,TODO
+공지 상세,/my-podo/notices/[id],notices.md,,TODO
+알림 설정,/my-podo/notification-settings,notification-settings.md,,TODO
+튜터 제외,/my-podo/tutor-exclusion,tutor-exclusion.md,,TODO
+수업 통계,/class-report,class-report.md,,TODO
+레벨 테스트,/selftest,selftest.md,,TODO
+해지,/podo/churn,churn.md,,TODO
+해지 사유,/podo/churn/quit-reason,quit-reason.md,,TODO

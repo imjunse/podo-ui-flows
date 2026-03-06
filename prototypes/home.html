@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Podo Home - Prototype</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --gray-900: #1C1C1C;
+    --gray-500: #757575;
+    --gray-400: #A5A5A5;
+    --gray-300: #D6D6D6;
+    --gray-200: #E8E8E8;
+    --gray-100: #F5F5F5;
+    --podo-white: #FBFBF9;
+    --podo-green: #B5FD4C;
+    --green-500: #6ABE36;
+    --green-300: #9BEB26;
+    --green-100: #F2FCEC;
+    --blue-500: #6184FF;
+  }
+
+  body {
+    font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  #root {
+    width: 100%;
+    max-width: 480px;
+    background: #fff;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* ===== Prototype Badge ===== */
+  .proto-badge {
+    position: fixed;
+    top: 8px;
+    right: 8px;
+    background: var(--gray-900);
+    color: var(--podo-green);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    z-index: 1000;
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== Navigation (Home uses custom nav, not TopBar) ===== */
+  .home-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: linear-gradient(to bottom, white 80%, rgba(255,255,255,0));
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .home-logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--gray-900);
+    letter-spacing: -0.5px;
+  }
+  .home-logo span {
+    color: var(--green-500);
+  }
+  .nav-icons {
+    display: flex;
+    gap: 8px;
+  }
+  .nav-icon-btn {
+    width: 32px; height: 32px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.15s;
+  }
+  .nav-icon-btn:hover { background: var(--gray-100); }
+  .nav-icon-btn svg { width: 22px; height: 22px; }
+
+  /* ===== Mode Switch ===== */
+  .mode-switch {
+    display: flex;
+    margin: 0 20px;
+    background: var(--gray-100);
+    border-radius: 10px;
+    padding: 3px;
+  }
+  .mode-btn {
+    flex: 1;
+    padding: 9px 0;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: var(--gray-400);
+    transition: all 0.25s ease;
+    letter-spacing: -0.28px;
+  }
+  .mode-btn.active {
+    background: #fff;
+    color: var(--gray-900);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+
+  /* ===== Content ===== */
+  .content { padding: 0 20px 80px; }
+
+  /* ===== Banner Carousel ===== */
+  .banner-carousel {
+    margin-top: 16px;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+  .banner-slide {
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(135deg, #1C1C1C 0%, #3a3a3a 100%);
+    display: flex;
+    align-items: center;
+    padding: 24px;
+    color: white;
+  }
+  .banner-text h3 {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.36px;
+    line-height: 26px;
+    margin-bottom: 6px;
+  }
+  .banner-text p {
+    font-size: 13px;
+    font-weight: 400;
+    opacity: 0.7;
+    letter-spacing: -0.26px;
+  }
+  .banner-dots {
+    position: absolute;
+    bottom: 12px;
+    right: 16px;
+    display: flex;
+    gap: 5px;
+  }
+  .banner-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+  }
+  .banner-dot.active { background: white; width: 16px; border-radius: 3px; }
+
+  /* ===== Greeting Section ===== */
+  .greeting {
+    margin-top: 20px;
+  }
+  .greeting-hello {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gray-900);
+    letter-spacing: -0.44px;
+    line-height: 30px;
+  }
+  .greeting-sub {
+    font-size: 14px;
+    color: var(--gray-500);
+    margin-top: 4px;
+    letter-spacing: -0.28px;
+    line-height: 20px;
+  }
+
+  /* ===== Stats Row ===== */
+  .stats-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .stat-card {
+    flex: 1;
+    background: var(--gray-100);
+    border-radius: 12px;
+    padding: 14px 12px;
+    cursor: pointer;
+    transition: background 0.15s;
+    text-align: center;
+  }
+  .stat-card:hover { background: var(--gray-200); }
+  .stat-card:active { opacity: 0.8; }
+  .stat-number {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gray-900);
+    letter-spacing: -0.4px;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--gray-500);
+    margin-top: 2px;
+    letter-spacing: -0.24px;
+  }
+
+  /* ===== Quick Action Buttons ===== */
+  .quick-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .quick-actions .link-card {
+    flex: 1;
+  }
+
+  /* ===== LinkCard Style ===== */
+  .link-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: var(--gray-100);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .link-card:hover { background: var(--gray-200); }
+  .link-card:active { opacity: 0.8; }
+  .link-card-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .link-card-text h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--gray-900);
+    letter-spacing: -0.3px;
+    line-height: 22px;
+  }
+  .link-card-text p {
+    font-size: 13px;
+    color: var(--gray-500);
+    letter-spacing: -0.26px;
+    line-height: 18px;
+    margin-top: 2px;
+  }
+  .link-card-arrow {
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+
+  /* ===== Section Title ===== */
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gray-900);
+    letter-spacing: -0.36px;
+    line-height: 26px;
+    margin-top: 28px;
+    margin-bottom: 12px;
+  }
+
+  /* ===== Class Cards ===== */
+  .class-card {
+    background: #fff;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 16px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .class-card:hover { border-color: var(--gray-300); }
+  .class-card:active { opacity: 0.8; }
+  .class-card + .class-card { margin-top: 10px; }
+  .class-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .class-badge {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 8px;
+    letter-spacing: -0.24px;
+  }
+  .badge-ready { background: var(--green-100); color: var(--green-500); }
+  .badge-upcoming { background: var(--gray-100); color: var(--gray-500); }
+  .class-time {
+    font-size: 12px;
+    color: var(--gray-400);
+    letter-spacing: -0.24px;
+  }
+  .class-info h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--gray-900);
+    letter-spacing: -0.32px;
+    line-height: 24px;
+  }
+  .class-info p {
+    font-size: 14px;
+    color: var(--gray-500);
+    letter-spacing: -0.28px;
+    line-height: 20px;
+    margin-top: 2px;
+  }
+  .class-tutor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--gray-100);
+  }
+  .tutor-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--gray-100);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    overflow: hidden;
+  }
+  .tutor-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gray-900);
+    letter-spacing: -0.28px;
+  }
+  .tutor-meta {
+    font-size: 12px;
+    color: var(--gray-400);
+    letter-spacing: -0.24px;
+  }
+
+  /* ===== AI Home ===== */
+  .ai-header {
+    margin-top: 24px;
+    text-align: center;
+  }
+  .ai-greeting {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--gray-900);
+    letter-spacing: -0.48px;
+    line-height: 32px;
+  }
+  .ai-greeting em {
+    font-style: normal;
+    color: var(--green-500);
+  }
+  .ai-sub {
+    font-size: 14px;
+    color: var(--gray-500);
+    letter-spacing: -0.28px;
+    margin-top: 4px;
+  }
+
+  .chat-section { margin-top: 24px; }
+  .chat-section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gray-900);
+    letter-spacing: -0.32px;
+    margin-bottom: 12px;
+  }
+  .chat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .chat-card {
+    background: var(--gray-100);
+    border-radius: 16px;
+    padding: 20px 16px;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: center;
+  }
+  .chat-card:hover { background: var(--gray-200); }
+  .chat-card:active { opacity: 0.8; transform: scale(0.98); }
+  .chat-avatar {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    background: #fff;
+  }
+  .chat-card h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--gray-900);
+    letter-spacing: -0.3px;
+    margin-bottom: 4px;
+  }
+  .chat-card p {
+    font-size: 12px;
+    color: var(--gray-500);
+    letter-spacing: -0.24px;
+    line-height: 17px;
+  }
+  .chat-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 6px;
+    margin-top: 10px;
+    background: #fff;
+    color: var(--gray-500);
+    letter-spacing: -0.22px;
+  }
+
+  /* ===== GNB (Bottom Nav) ===== */
+  .gnb {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    background: #fff;
+    border-top: 1px solid var(--gray-200);
+    z-index: 100;
+    height: 62px;
+  }
+  .gnb-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 9px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .gnb-icon {
+    font-size: 20px;
+    width: 24px; height: 24px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .gnb-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: -0.27px;
+    line-height: 14px;
+    color: var(--gray-300);
+  }
+  .gnb-item.active .gnb-label { color: var(--gray-900); }
+
+  /* ===== ButtonPrimary ===== */
+  .btn-primary-wrap {
+    width: 100%;
+    height: 52px;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+  }
+  .btn-primary-shadow {
+    width: 100%;
+    border-radius: 8px;
+    padding-bottom: 4px;
+    background: var(--gray-900);
+    transition: all 0.1s;
+  }
+  .btn-primary-wrap:hover .btn-primary-shadow {
+    transform: translateY(2px);
+    padding-bottom: 2px;
+  }
+  .btn-primary-wrap:active .btn-primary-shadow {
+    transform: translateY(4px);
+    padding-bottom: 0;
+  }
+  .btn-primary-face {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 48px;
+    border-radius: 8px;
+    background: var(--podo-green);
+    border: 1.5px solid var(--gray-900);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gray-900);
+    letter-spacing: -0.48px;
+    transition: background 0.1s;
+  }
+  .btn-primary-wrap:hover .btn-primary-face { background: var(--green-300); }
+
+  /* ===== Error State ===== */
+  .error-state {
+    text-align: center;
+    padding: 80px 20px;
+  }
+  .error-icon { font-size: 40px; margin-bottom: 16px; }
+  .error-state h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gray-900);
+    letter-spacing: -0.36px;
+    margin-bottom: 8px;
+  }
+  .error-state p {
+    font-size: 14px;
+    color: var(--gray-500);
+    letter-spacing: -0.28px;
+    line-height: 20px;
+    margin-bottom: 24px;
+  }
+
+  /* ===== Skeleton ===== */
+  .skeleton {
+    background: linear-gradient(90deg, var(--gray-100) 25%, var(--gray-200) 50%, var(--gray-100) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 12px;
+  }
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* ===== Bottom Sheet (Popup) ===== */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+  .overlay.show { opacity: 1; pointer-events: all; }
+  .overlay-bg {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    animation: fadeIn 200ms ease;
+  }
+  .sheet {
+    position: relative;
+    background: #fff;
+    width: 100%;
+    max-width: 480px;
+    border-radius: 24px 24px 0 0;
+    padding: 24px 20px 32px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-out;
+  }
+  .overlay.show .sheet { transform: translateY(0); }
+  .sheet-handle {
+    width: 36px; height: 4px;
+    background: var(--gray-200);
+    border-radius: 2px;
+    margin: 0 auto 24px;
+  }
+  .sheet h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gray-900);
+    letter-spacing: -0.36px;
+    line-height: 26px;
+    margin-bottom: 8px;
+  }
+  .sheet p {
+    font-size: 14px;
+    color: var(--gray-500);
+    letter-spacing: -0.28px;
+    line-height: 22px;
+    margin-bottom: 20px;
+  }
+  .sheet-image {
+    width: 100%;
+    height: 160px;
+    background: linear-gradient(135deg, var(--gray-900), #555);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 32px;
+  }
+  .sheet-dismiss {
+    width: 100%;
+    padding: 14px;
+    background: none;
+    border: none;
+    color: var(--gray-500);
+    font-size: 14px;
+    cursor: pointer;
+    letter-spacing: -0.28px;
+  }
+  .sheet-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--gray-400);
+    letter-spacing: -0.26px;
+  }
+  .sheet-checkbox input {
+    width: 16px; height: 16px;
+    accent-color: var(--green-500);
+  }
+
+  /* ===== State Controls ===== */
+  .controls {
+    position: fixed;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 4px;
+    z-index: 150;
+    background: var(--gray-900);
+    padding: 4px 8px;
+    border-radius: 16px;
+  }
+  .ctrl-btn {
+    font-size: 11px;
+    padding: 5px 10px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    background: transparent;
+    color: var(--gray-400);
+    transition: all 0.15s;
+    letter-spacing: -0.22px;
+    font-family: inherit;
+  }
+  .ctrl-btn.active {
+    background: var(--podo-green);
+    color: var(--gray-900);
+  }
+
+  .hidden { display: none !important; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { animation: slideUp 0.3s ease; }
+</style>
+</head>
+<body>
+
+<div id="root">
+  <div class="proto-badge">PROTOTYPE</div>
+
+  <!-- ===== Nav ===== -->
+  <nav class="home-nav">
+    <div class="home-logo">podo<span>.</span></div>
+    <div class="nav-icons">
+      <button class="nav-icon-btn" id="ticketIcon" style="display:none;" title="수강권">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1C1C1C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="3"/>
+          <path d="M2 10h20"/>
+        </svg>
+      </button>
+      <button class="nav-icon-btn" title="알림">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1C1C1C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== Mode Switch ===== -->
+  <div class="mode-switch">
+    <button class="mode-btn active" id="tabBasic" onclick="switchMode('basic')">Basic</button>
+    <button class="mode-btn" id="tabAI" onclick="switchMode('ai')">Smart Talk</button>
+  </div>
+
+  <!-- ==================== BASIC HOME ==================== -->
+  <div class="content" id="basicHome">
+
+    <!-- Loading -->
+    <div id="basicLoading" class="hidden">
+      <div class="skeleton" style="height:150px;margin-top:16px;border-radius:16px;"></div>
+      <div class="skeleton" style="height:40px;margin-top:20px;"></div>
+      <div style="display:flex;gap:8px;margin-top:12px;">
+        <div class="skeleton" style="flex:1;height:70px;"></div>
+        <div class="skeleton" style="flex:1;height:70px;"></div>
+        <div class="skeleton" style="flex:1;height:70px;"></div>
+      </div>
+      <div class="skeleton" style="height:130px;margin-top:28px;"></div>
+      <div class="skeleton" style="height:130px;margin-top:10px;"></div>
+    </div>
+
+    <!-- Success -->
+    <div id="basicSuccess" class="fade-in">
+
+      <!-- Banner -->
+      <div class="banner-carousel" onclick="alert('Navigate to: 배너 링크')">
+        <div class="banner-slide">
+          <div class="banner-text">
+            <h3>3월 스프링 특가!</h3>
+            <p>첫 수업 50% 할인 + 무료 레벨테스트</p>
+          </div>
+        </div>
+        <div class="banner-dots">
+          <div class="banner-dot active"></div>
+          <div class="banner-dot"></div>
+          <div class="banner-dot"></div>
+        </div>
+      </div>
+
+      <!-- Greeting -->
+      <div class="greeting">
+        <div class="greeting-hello">안녕하세요, 준서님!</div>
+        <div class="greeting-sub">오늘도 영어 실력을 키워볼까요?</div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat-card" onclick="alert('Navigate to: /class-report')">
+          <div class="stat-number">24</div>
+          <div class="stat-label">완료 수업</div>
+        </div>
+        <div class="stat-card" onclick="alert('Navigate to: /class-report')">
+          <div class="stat-number">Lv.5</div>
+          <div class="stat-label">현재 레벨</div>
+        </div>
+        <div class="stat-card" onclick="alert('Navigate to: /selftest')">
+          <div class="stat-number">B2</div>
+          <div class="stat-label">레벨 테스트</div>
+        </div>
+      </div>
+
+      <!-- Quick Actions as LinkCards -->
+      <div class="quick-actions" style="margin-top:12px;">
+        <div class="link-card" onclick="alert('Navigate to: /lessons/regular')" style="flex:1;flex-direction:column;align-items:center;gap:6px;padding:14px 12px;">
+          <div style="font-size:20px;">&#128218;</div>
+          <div style="font-size:14px;font-weight:600;color:var(--gray-900);letter-spacing:-0.28px;">정규 수업</div>
+        </div>
+        <div class="link-card" onclick="alert('Navigate to: /lessons/trial')" style="flex:1;flex-direction:column;align-items:center;gap:6px;padding:14px 12px;">
+          <div style="font-size:20px;">&#127891;</div>
+          <div style="font-size:14px;font-weight:600;color:var(--gray-900);letter-spacing:-0.28px;">체험 수업</div>
+        </div>
+      </div>
+
+      <!-- Class Prepare -->
+      <div class="section-title">다가오는 수업</div>
+
+      <div class="class-card" onclick="alert('Navigate to: 수업 상세')">
+        <div class="class-header">
+          <span class="class-badge badge-ready">수업 준비 완료</span>
+          <span class="class-time">오늘 오후 3:00</span>
+        </div>
+        <div class="class-info">
+          <h4>Daily Conversation - Travel</h4>
+          <p>여행 관련 실전 회화 표현 연습</p>
+        </div>
+        <div class="class-tutor">
+          <div class="tutor-avatar">&#128105;&#8205;&#127979;</div>
+          <div>
+            <div class="tutor-name">Sarah K.</div>
+            <div class="tutor-meta">&#9733; 4.9 &middot; 1,240회 수업</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="class-card" onclick="alert('Navigate to: 수업 상세')">
+        <div class="class-header">
+          <span class="class-badge badge-upcoming">예정됨</span>
+          <span class="class-time">내일 오전 10:00</span>
+        </div>
+        <div class="class-info">
+          <h4>Business English - Meeting</h4>
+          <p>비즈니스 미팅 영어 표현</p>
+        </div>
+        <div class="class-tutor">
+          <div class="tutor-avatar">&#128104;&#8205;&#127979;</div>
+          <div>
+            <div class="tutor-name">James W.</div>
+            <div class="tutor-meta">&#9733; 4.8 &middot; 890회 수업</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error -->
+    <div id="basicError" class="hidden">
+      <div class="error-state">
+        <div class="error-icon">&#128546;</div>
+        <h3>Something went wrong</h3>
+        <p>An error occurred while loading the home page. Please try again.</p>
+        <button class="btn-primary-wrap" onclick="switchCurrentState('loading'); setTimeout(() => switchCurrentState('success'), 1500)">
+          <div class="btn-primary-shadow">
+            <div class="btn-primary-face">Try again</div>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== AI HOME ==================== -->
+  <div class="content hidden" id="aiHome">
+
+    <!-- Loading -->
+    <div id="aiLoading" class="hidden">
+      <div class="skeleton" style="height:80px;margin-top:24px;"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px;">
+        <div class="skeleton" style="height:170px;border-radius:16px;"></div>
+        <div class="skeleton" style="height:170px;border-radius:16px;"></div>
+        <div class="skeleton" style="height:170px;border-radius:16px;"></div>
+        <div class="skeleton" style="height:170px;border-radius:16px;"></div>
+      </div>
+    </div>
+
+    <!-- Success -->
+    <div id="aiSuccess" class="fade-in">
+      <div class="ai-header">
+        <div class="ai-greeting">Hello, <em>준서</em>!</div>
+        <div class="ai-sub">AI와 함께 영어로 대화해봐요</div>
+      </div>
+
+      <div class="chat-section">
+        <div class="chat-section-title">추천 챗</div>
+        <div class="chat-grid">
+          <div class="chat-card" onclick="alert('Navigate to: 캐릭터 챗 상세')">
+            <div class="chat-avatar">&#9749;</div>
+            <h4>Cafe Chat</h4>
+            <p>카페에서 주문하는 상황을 연습해요</p>
+            <span class="chat-tag">일상회화</span>
+          </div>
+          <div class="chat-card" onclick="alert('Navigate to: 캐릭터 챗 상세')">
+            <div class="chat-avatar">&#9992;&#65039;</div>
+            <h4>Airport</h4>
+            <p>공항에서 필요한 영어를 배워요</p>
+            <span class="chat-tag">여행</span>
+          </div>
+          <div class="chat-card" onclick="alert('Navigate to: 캐릭터 챗 상세')">
+            <div class="chat-avatar">&#128188;</div>
+            <h4>Job Interview</h4>
+            <p>영어 면접 실전 연습</p>
+            <span class="chat-tag">비즈니스</span>
+          </div>
+          <div class="chat-card" onclick="alert('Navigate to: 캐릭터 챗 상세')">
+            <div class="chat-avatar">&#127926;</div>
+            <h4>Music Talk</h4>
+            <p>좋아하는 음악에 대해 이야기해요</p>
+            <span class="chat-tag">자유주제</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error -->
+    <div id="aiError" class="hidden">
+      <div class="error-state">
+        <div class="error-icon">&#128546;</div>
+        <h3>Something went wrong</h3>
+        <p>An error occurred while loading the home page. Please try again.</p>
+        <button class="btn-primary-wrap" onclick="switchCurrentState('loading'); setTimeout(() => switchCurrentState('success'), 1500)">
+          <div class="btn-primary-shadow">
+            <div class="btn-primary-face">Try again</div>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== GNB ===== -->
+  <nav class="gnb">
+    <button class="gnb-item active">
+      <span class="gnb-icon">&#127968;</span>
+      <span class="gnb-label">홈</span>
+    </button>
+    <button class="gnb-item" onclick="alert('Navigate to: /subscribes')">
+      <span class="gnb-icon">&#128218;</span>
+      <span class="gnb-label">레슨</span>
+    </button>
+    <button class="gnb-item" onclick="alert('Navigate to: /reservation')">
+      <span class="gnb-icon">&#128197;</span>
+      <span class="gnb-label">예약</span>
+    </button>
+    <button class="gnb-item" onclick="alert('Navigate to: /ai-learning')">
+      <span class="gnb-icon">&#129302;</span>
+      <span class="gnb-label">AI 학습</span>
+    </button>
+    <button class="gnb-item" onclick="alert('Navigate to: /my-podo')">
+      <span class="gnb-icon">&#128100;</span>
+      <span class="gnb-label">마이포도</span>
+    </button>
+  </nav>
+
+</div><!-- #root -->
+
+<!-- ===== Popup: 공지사항 ===== -->
+<div class="overlay" id="popupOverlay">
+  <div class="overlay-bg" onclick="closePopup()"></div>
+  <div class="sheet" onclick="event.stopPropagation()">
+    <div class="sheet-handle"></div>
+    <h3>3월 스프링 이벤트 안내</h3>
+    <p>봄맞이 특별 할인! 6개월 수강권 구매 시 1개월 추가 제공됩니다.</p>
+    <div class="sheet-image">&#127800;</div>
+    <button class="btn-primary-wrap" onclick="alert('Navigate to: 이벤트 페이지')">
+      <div class="btn-primary-shadow">
+        <div class="btn-primary-face">자세히 보기</div>
+      </div>
+    </button>
+    <button class="sheet-dismiss" onclick="closePopup()">닫기</button>
+    <label class="sheet-checkbox">
+      <input type="checkbox"> 오늘 하루 보지 않기
+    </label>
+  </div>
+</div>
+
+<!-- ===== Controls ===== -->
+<div class="controls">
+  <button class="ctrl-btn active" onclick="switchCurrentState('success')">성공</button>
+  <button class="ctrl-btn" onclick="switchCurrentState('loading')">로딩</button>
+  <button class="ctrl-btn" onclick="switchCurrentState('error')">에러</button>
+  <button class="ctrl-btn" onclick="showPopup()">팝업</button>
+</div>
+
+<script>
+let currentMode = 'basic';
+
+function switchMode(mode) {
+  currentMode = mode;
+  document.getElementById('tabBasic').classList.toggle('active', mode === 'basic');
+  document.getElementById('tabAI').classList.toggle('active', mode === 'ai');
+  document.getElementById('basicHome').classList.toggle('hidden', mode !== 'basic');
+  document.getElementById('aiHome').classList.toggle('hidden', mode !== 'ai');
+  document.getElementById('ticketIcon').style.display = mode === 'ai' ? '' : 'none';
+  resetControls();
+}
+
+function switchState(mode, state) {
+  const p = mode === 'basic' ? 'basic' : 'ai';
+  ['Loading','Success','Error'].forEach(s => {
+    document.getElementById(p + s).classList.toggle('hidden', s.toLowerCase() !== state);
+  });
+}
+
+function switchCurrentState(state) {
+  switchState(currentMode, state);
+  document.querySelectorAll('.ctrl-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  if (state === 'loading') {
+    setTimeout(() => {
+      switchState(currentMode, 'success');
+      resetControls();
+    }, 1500);
+  }
+}
+
+function resetControls() {
+  document.querySelectorAll('.ctrl-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector('.ctrl-btn').classList.add('active');
+}
+
+function showPopup() {
+  document.getElementById('popupOverlay').classList.add('show');
+}
+function closePopup() {
+  document.getElementById('popupOverlay').classList.remove('show');
+}
+</script>
+
+</body>
+</html>

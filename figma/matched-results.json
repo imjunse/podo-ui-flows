@@ -1,0 +1,163 @@
+[
+  {
+    "mdName": "Home",
+    "mdFile": "home.md",
+    "figmaScreen": "홈-레슨권 비구매자",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
+    "note": "Figma 화면: \"홈-레슨권 비구매자\" 찾아서 URL 업데이트 필요"
+  },
+  {
+    "mdName": "Home (AI)",
+    "mdFile": "home.md",
+    "figmaScreen": "ai학습",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
+    "note": "Figma 화면: \"ai학습\" 찾아서 URL 업데이트 필요"
+  },
+  {
+    "mdName": "수업 탐색",
+    "mdFile": "subscribes.md",
+    "figmaScreen": "수업",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
+    "note": "Figma 화면: \"수업\" 찾아서 URL 업데이트 필요"
+  },
+  {
+    "mdName": "수강권 목록",
+    "mdFile": "tickets.md",
+    "figmaScreen": "레슨권 구매",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
+    "note": "Figma 화면: \"레슨권 구매\" 찾아서 URL 업데이트 필요"
+  },
+  {
+    "mdName": "체험 수업",
+    "mdFile": "lessons-trial.md",
+    "figmaScreen": "체험레슨 신청",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
+    "note": "Figma 화면: \"체험레슨 신청\" 찾아서 URL 업데이트 필요"
+  },
+  {
+    "mdName": "결제 페이지",
+    "mdFile": "payment.md",
+    "figmaScreen": "구독결제_등록된결제수단_카카오페이",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
+    "note": "Figma 화면: \"구독결제_등록된결제수단_카카오페이\" 찾아서 URL 업데이트 필요"
+  },
+  {
+    "mdName": "결제 완료",
+    "mdFile": "payment-success.md",
+    "figmaScreen": "마이포도/결제수단/결제수단 추가",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
+    "note": "Figma 화면: \"마이포도/결제수단/결제수단 추가\" 찾아서 URL 업데이트 필요"
+  },
+  {
+    "mdName": "예약",
+    "mdFile": "reservation.md",
+    "figmaScreen": "예약 변경",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
+    "note": "Figma 화면: \"예약 변경\" 찾아서 URL 업데이트 필요"
+  },
+  {
+    "mdName": "정규 수업 목록",
+    "mdFile": "lessons-regular.md",
+    "figmaScreen": "탈퇴_정규 레슨권 보유한 경우",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
+    "note": "Figma 화면: \"탈퇴_정규 레슨권 보유한 경우\" 찾아서 URL 업데이트 필요"
+  },
+  {
+    "mdName": "체험 수업 목록",
+    "mdFile": "lessons-trial.md",
+    "figmaScreen": "체험레슨 신청",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
+    "note": "Figma 화면: \"체험레슨 신청\" 찾아서 URL 업데이트 필요"
+  },
+  {
+    "mdName": "AI 수업 목록",
+    "mdFile": "lessons-ai.md",
+    "figmaScreen": "ai학습",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
+    "note": "Figma 화면: \"ai학습\" 찾아서 URL 업데이트 필요"
+  },
+  {
+    "mdName": "수업 진행",
+    "mdFile": "classroom.md",
+    "figmaScreen": "예약_예약된 레슨 있음_수업 10분 전",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
+    "note": "Figma 화면: \"예약_예약된 레슨 있음_수업 10분 전\" 찾아서 URL 업데이트 필요"
+  },
+  {
+    "mdName": "수업 리뷰",
+    "mdFile": "review.md",
+    "figmaScreen": "복습",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
+    "note": "Figma 화면: \"복습\" 찾아서 URL 업데이트 필요"
+  },
+  {
+    "mdName": "수업 리포트",
+    "mdFile": "class-report.md",
+    "figmaScreen": "잔여 수업",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
+    "note": "Figma 화면: \"잔여 수업\" 찾아서 URL 업데이트 필요"
+  },
+  {
+    "mdName": "AI Learning",
+    "mdFile": "ai-learning.md",
+    "figmaScreen": "ai학습",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
+    "note": "Figma 화면: \"ai학습\" 찾아서 URL 업데이트 필요"
+  },
+  {
+    "mdName": "마이포도",
+    "mdFile": "my-podo.md",
+    "figmaScreen": "마이포도/마이 포도 플랜",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
+    "note": "Figma 화면: \"마이포도/마이 포도 플랜\" 찾아서 URL 업데이트 필요"
+  },
+  {
+    "mdName": "쿠폰",
+    "mdFile": "coupon.md",
+    "figmaScreen": "마이포도/마이 쿠폰",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
+    "note": "Figma 화면: \"마이포도/마이 쿠폰\" 찾아서 URL 업데이트 필요"
+  },
+  {
+    "mdName": "결제 수단",
+    "mdFile": "payment-methods.md",
+    "figmaScreen": "마이포도/결제수단/결제수단 추가",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
+    "note": "Figma 화면: \"마이포도/결제수단/결제수단 추가\" 찾아서 URL 업데이트 필요"
+  },
+  {
+    "mdName": "결제 수단 등록",
+    "mdFile": "payment-methods.md",
+    "figmaScreen": "마이포도/결제수단/결제수단 추가",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
+    "note": "Figma 화면: \"마이포도/결제수단/결제수단 추가\" 찾아서 URL 업데이트 필요"
+  },
+  {
+    "mdName": "내 플랜",
+    "mdFile": "plan.md",
+    "figmaScreen": "마이포도/마이 포도 플랜/수강증 발급",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
+    "note": "Figma 화면: \"마이포도/마이 포도 플랜/수강증 발급\" 찾아서 URL 업데이트 필요"
+  },
+  {
+    "mdName": "공지사항",
+    "mdFile": "notices.md",
+    "figmaScreen": "마이포도/공지사항",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
+    "note": "Figma 화면: \"마이포도/공지사항\" 찾아서 URL 업데이트 필요"
+  },
+  {
+    "mdName": "해지",
+    "mdFile": "churn.md",
+    "figmaScreen": "마이포도/마이 포도 플랜/구독 해지하기",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
+    "note": "Figma 화면: \"마이포도/마이 포도 플랜/구독 해지하기\" 찾아서 URL 업데이트 필요"
+  },
+  {
+    "mdName": "해지 사유",
+    "mdFile": "quit-reason.md",
+    "figmaScreen": "마이포도/마이 포도 플랜/구독 해지하기",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
+    "note": "Figma 화면: \"마이포도/마이 포도 플랜/구독 해지하기\" 찾아서 URL 업데이트 필요"
+  }
+]

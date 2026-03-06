@@ -1,0 +1,132 @@
+graph TD
+    %% ===== AUTH =====
+    Login["🔐 Login"]
+    OAuth["OAuth Redirect"]
+    Login --> OAuth --> HomeRedirect{HomeRedirection}
+    HomeRedirect -->|AI 전용 수강권만| HomeAI
+    HomeRedirect -->|그 외| Home
+
+    %% ===== BOTTOM TAB NAVIGATION =====
+    subgraph BottomTabs["📱 Bottom Tab Navigation"]
+        Home["🏠 Home (Basic)"]
+        HomeAI["🤖 Home (Smart Talk)"]
+        Subscribes["📚 수업 탐색"]
+        Reservation["📅 예약"]
+        AILearning["🧠 AI Learning"]
+        MyPodo["👤 마이포도"]
+    end
+
+    Home <--> HomeAI
+
+    %% ===== SUBSCRIPTION & PAYMENT FLOW =====
+    subgraph SubFlow["💳 구독 & 결제 플로우"]
+        Tickets["수강권 목록"]
+        TicketsV2["수강권 V2"]
+        SmartTalkTickets["스마트톡 수강권"]
+        PaybackTickets["페이백 수강권"]
+        TrialSub["체험 수업"]
+        TrialSmartTalk["체험 스마트톡"]
+        TrialSmartTalkDetail["체험 스마트톡 상세"]
+        Payment["결제 페이지"]
+        PaymentSuccess["결제 완료 ✅"]
+    end
+
+    Subscribes --> Tickets
+    Subscribes --> TicketsV2
+    Tickets --> SmartTalkTickets
+    Tickets --> PaybackTickets
+    Subscribes --> TrialSub
+    TrialSub --> TrialSmartTalk
+    TrialSmartTalk --> TrialSmartTalkDetail
+    Tickets --> Payment
+    TicketsV2 --> Payment
+    SmartTalkTickets --> Payment
+    PaybackTickets --> Payment
+    TrialSmartTalkDetail --> Payment
+    Payment --> PaymentSuccess
+    PaymentSuccess -->|예습하러 가기| Subscribes
+    PaymentSuccess -->|홈으로| Home
+    PaymentSuccess -->|홈으로 AI| HomeAI
+
+    %% ===== LESSON FLOW =====
+    subgraph LessonFlow["📖 수업 플로우"]
+        RegularLessons["정규 수업 목록"]
+        TrialLessons["체험 수업 목록"]
+        AILessons["AI 수업 목록"]
+        AILessonDetail["AI 수업 상세"]
+        AITrialReport["AI 체험 리포트"]
+        Classroom["🎓 수업 진행"]
+        Drawing["🎨 드로잉 캔버스"]
+        Review["수업 리뷰"]
+        ReviewComplete["리뷰 완료"]
+        LessonReport["📊 수업 리포트"]
+    end
+
+    Home --> RegularLessons
+    Home --> TrialLessons
+    HomeAI --> AILessons
+    AILessons --> AILessonDetail
+    AILessonDetail --> AITrialReport
+    PaymentSuccess --> Reservation
+    Reservation --> Classroom
+    Classroom --> Drawing
+    Classroom --> Review
+    Review --> ReviewComplete
+    ReviewComplete --> LessonReport
+
+    %% ===== AI LEARNING FLOW =====
+    AILearning --> AILessons
+
+    %% ===== MY PODO =====
+    subgraph MyPodoFlow["👤 마이포도"]
+        Coupon["🎟️ 쿠폰"]
+        CouponDetail["쿠폰 상세"]
+        PaymentMethods["💳 결제 수단"]
+        RegisterPayment["결제 수단 등록"]
+        MyPlan["📋 내 플랜"]
+        PlanDetail["플랜 상세"]
+        Notices["📢 공지사항"]
+        NoticeDetail["공지 상세"]
+        NotificationSettings["🔔 알림 설정"]
+        TutorExclusion["🚫 튜터 제외"]
+    end
+
+    MyPodo --> Coupon --> CouponDetail
+    MyPodo --> PaymentMethods --> RegisterPayment
+    MyPodo --> MyPlan --> PlanDetail
+    MyPodo --> Notices --> NoticeDetail
+    MyPodo --> NotificationSettings
+    MyPodo --> TutorExclusion
+
+    %% ===== CHURN =====
+    subgraph ChurnFlow["🚪 해지 플로우"]
+        Churn["해지 시작"]
+        QuitReason["해지 사유 선택"]
+    end
+
+    MyPodo --> Churn --> QuitReason
+
+    %% ===== OTHER =====
+    Home --> ClassReport["📊 수업 통계"]
+    Home --> SelfTest["📝 레벨 테스트"]
+    Home --> FirstLessonBooster["첫 수업 부스터 다이얼로그"]
+    Home --> LevelSelect["레벨 선택 다이얼로그"]
+
+    %% ===== EXTERNAL =====
+    subgraph External["🌐 외부"]
+        AppInstall["앱 설치 배너"]
+        OpenInBrowser["브라우저에서 열기"]
+        QRStore["QR 스토어"]
+        OpenInApp["앱에서 열기"]
+    end
+
+    %% ===== STYLING =====
+    classDef tab fill:#4A90D9,stroke:#333,color:#fff
+    classDef auth fill:#E74C3C,stroke:#333,color:#fff
+    classDef payment fill:#27AE60,stroke:#333,color:#fff
+    classDef lesson fill:#F39C12,stroke:#333,color:#fff
+
+    class Home,HomeAI,Subscribes,Reservation,AILearning,MyPodo tab
+    class Login,OAuth auth
+    class Payment,PaymentSuccess payment
+    class Classroom,Review,ReviewComplete,LessonReport lesson

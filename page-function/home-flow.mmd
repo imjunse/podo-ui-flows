@@ -1,0 +1,96 @@
+graph TD
+    %% ===== 초기 진입 & 리디렉션 =====
+    Start[로그인 완료] --> Redirect{HomeRedirection<br/>체크}
+    Redirect -->|AI 전용 수강권만 있음| AIHome[🤖 AI Home /home/ai]
+    Redirect -->|그 외| BasicHome[🏠 Basic Home /home]
+
+    %% ===== Basic Home 로딩 =====
+    BasicHome --> LoadBasic[⏳ 데이터 로딩<br/>Suspense 시작]
+    LoadBasic --> BannerLoad{배너<br/>로드}
+    BannerLoad -->|로딩 중| BannerSkeleton[HomeBannerSkeleton]
+    BannerLoad -->|성공| Banner[📸 HomeBannerCarousel]
+    BannerLoad -->|실패| BannerError[ErrorBoundary catch]
+
+    Banner --> GreetLoad{인사말<br/>로드}
+    GreetLoad -->|로딩 중| GreetSkeleton[GreetingContent.Skeleton]
+    GreetLoad -->|성공| Greeting[👋 GreetingContent]
+    GreetLoad -->|실패| GreetError[ErrorBoundary catch]
+
+    Greeting --> TrialCheck{체험<br/>유저?}
+    TrialCheck -->|Yes| TrialTutorial[🎓 TrialTutorial]
+    TrialCheck -->|No| ClassPrepLoad{수업 준비<br/>로드}
+    TrialTutorial --> ClassPrepLoad
+
+    ClassPrepLoad -->|로딩 중| ClassPrepSkeleton[ClassPrepareSkeleton]
+    ClassPrepLoad -->|성공| ClassPrep[📚 ClassPrepareWidget]
+    ClassPrepLoad -->|실패| ClassPrepError[ErrorBoundary catch]
+
+    %% ===== Basic Home 팝업들 =====
+    ClassPrep --> Popups{팝업 조건}
+    Popups -->|공지사항 있음| HomePopup[[HomePopupBottomSheet]]
+    Popups -->|재방문 조건| WelcomeBack[[WelcomeBackPopup]]
+    Popups -->|tutorId 파라미터| TutorProfile[[TutorProfileBottomSheet]]
+    HomePopup --> BasicContent[✅ Basic Home 완료]
+    WelcomeBack --> BasicContent
+    TutorProfile --> BasicContent
+    Popups -->|조건 없음| BasicContent
+
+    %% ===== AI Home 로딩 =====
+    AIHome --> LoadAI[⏳ AI 데이터 로딩<br/>Suspense 시작]
+    LoadAI --> OnboardLoad{온보딩<br/>로드}
+    OnboardLoad -->|로딩 중| OnboardSkeleton[최소 높이 화면]
+    OnboardLoad -->|성공| Onboard[🎯 CharacterChatOnboardingSection]
+    OnboardLoad -->|실패| OnboardError[ErrorBoundary catch]
+
+    Onboard --> RecommendLoad{추천 챗<br/>로드}
+    RecommendLoad -->|로딩 중| RecommendSkeleton[체험/추천 챗 타이틀]
+    RecommendLoad -->|성공| Recommend[🤖 RecommendCharacterChatSection]
+    RecommendLoad -->|실패| RecommendError[ErrorBoundary catch]
+
+    Recommend --> AIPopup{팝업 조건}
+    AIPopup -->|공지사항 있음| AIHomePopup[[HomePopupBottomSheet]]
+    AIHomePopup --> AIContent[✅ AI Home 완료]
+    AIPopup -->|조건 없음| AIContent
+
+    %% ===== 에러 처리 =====
+    BannerError --> ErrorPage[❌ HomeViewErrorFallback]
+    GreetError --> ErrorPage
+    ClassPrepError --> ErrorPage
+    ErrorPage --> Retry((Try again 버튼))
+    Retry --> LoadBasic
+
+    OnboardError --> AIErrorPage[❌ AI Home Error]
+    RecommendError --> AIErrorPage
+    AIErrorPage --> AIRetry((재시도))
+    AIRetry --> LoadAI
+
+    %% ===== 사용자 인터랙션 - Basic Home =====
+    BasicContent --> Actions{사용자 액션}
+    Actions -->|배너 클릭| BannerLink[배너 링크 이동]
+    Actions -->|인사말 섹션| GreetAction[수강권/레벨 확인]
+    Actions -->|수업 준비 클릭| ClassAction[수업 상세 이동]
+    Actions -->|네비게이션| NavAction[다른 탭 이동]
+
+    %% ===== 사용자 인터랙션 - AI Home =====
+    AIContent --> AIActions{사용자 액션}
+    AIActions -->|티켓 아이콘| TicketLink{유저 타입}
+    TicketLink -->|체험| TrialTicket[스마트톡 수강권]
+    TicketLink -->|정식| NormalTicket[수업 탐색]
+    AIActions -->|캐릭터 챗 선택| ChatDetail[챗 상세/시작]
+    AIActions -->|네비게이션| AINavAction[다른 탭 이동]
+
+    %% ===== 스타일링 =====
+    classDef normal fill:#4A90D9,stroke:#333,color:#fff
+    classDef ai fill:#9B59B6,stroke:#333,color:#fff
+    classDef error fill:#E74C3C,stroke:#333,color:#fff
+    classDef loading fill:#F39C12,stroke:#333,color:#fff
+    classDef skeleton fill:#BDC3C7,stroke:#333,color:#333
+    classDef modal fill:#E67E22,stroke:#333,color:#fff
+    classDef success fill:#27AE60,stroke:#333,color:#fff
+
+    class BasicHome,Banner,Greeting,ClassPrep,BasicContent normal
+    class AIHome,Onboard,Recommend,AIContent ai
+    class ErrorPage,AIErrorPage,BannerError,GreetError,ClassPrepError,OnboardError,RecommendError error
+    class LoadBasic,LoadAI,BannerLoad,GreetLoad,ClassPrepLoad,OnboardLoad,RecommendLoad loading
+    class BannerSkeleton,GreetSkeleton,ClassPrepSkeleton,OnboardSkeleton,RecommendSkeleton skeleton
+    class HomePopup,WelcomeBack,TutorProfile,AIHomePopup,TrialTutorial modal
