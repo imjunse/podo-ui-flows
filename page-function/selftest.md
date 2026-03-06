@@ -4,6 +4,8 @@
 **부모 화면**: Home 또는 My Podo
 **타입**: 풀스크린 플로우
 
+**Figma**: [온보딩 디자인](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21049-6218)
+
 ## 개요
 
 사용자의 영어 실력을 측정하여 적합한 레벨을 추천하는 테스트 화면입니다. 신규 가입 시 또는 레벨 재측정 요청 시 진행됩니다.
@@ -419,3 +421,7 @@ interface TestResult {
 | 날짜 | 작성자 | 변경 내용 |
 |------|--------|----------|
 | 2026-03-04 | Claude | 최초 작성 |
+
+## Figma 관련 화면
+
+- [두번째 온보딩](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21178-5942)

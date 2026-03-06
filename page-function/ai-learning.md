@@ -4,6 +4,8 @@
 **부모 화면**: AI 수업 상세 또는 Home (Smart Talk)
 **타입**: 풀스크린 학습 화면
 
+**Figma**: [ai학습 디자인](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21242-6202)
+
 ## 개요
 
 AI 튜터와 함께하는 대화형 학습 화면입니다. 음성 또는 텍스트로 AI와 대화하며 영어를 학습할 수 있으며, 실시간 발음 피드백, 문법 교정, 표현 제안 등의 기능을 제공합니다.

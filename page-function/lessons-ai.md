@@ -4,6 +4,8 @@
 **부모 화면**: Home AI 탭 (`/home/ai`)
 **타입**: 메인 화면
 
+**Figma**: [ai학습 디자인](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21242-6202)
+
 ## 개요
 
 사용자가 AI 튜터와 진행할 수업 주제를 선택하는 화면입니다. 언어 타입(EN/CN)에 따라 다른 수업 목록이 표시되며, 주제를 선택하면 새로운 수업이 생성되고 예약 화면으로 이동합니다.

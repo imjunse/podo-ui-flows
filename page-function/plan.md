@@ -4,6 +4,8 @@
 **부모 화면**: My Podo
 **타입**: 풀스크린
 
+**Figma**: [마이포도/마이 포도 플랜 디자인](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21451-5669)
+
 ## 개요
 
 사용자의 현재 구독 플랜과 보유 티켓을 통합 관리하는 화면입니다. 플랜 변경, 티켓 사용 현황 확인, 결제 정보 관리 등의 기능을 제공합니다.
@@ -444,3 +446,10 @@ interface TicketUsage {
 | 날짜 | 작성자 | 변경 내용 |
 |------|--------|----------|
 | 2026-03-04 | Claude | 최초 작성 |
+
+## Figma 관련 화면
+
+- [마이포도/마이 포도 플랜/수강증 발급](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=15927-11084)
+- [레슨권 연장](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=20588-7970)
+- [레슨권 변경](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21853-10805)
+- [위약금 조회](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21853-10609)

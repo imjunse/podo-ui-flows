@@ -4,6 +4,8 @@
 **부모 화면**: 수업 진행 (`/lessons/classroom/[classID]`)
 **타입**: 풀스크린 페이지
 
+**Figma**: [복습 디자인](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21498-8538)
+
 ## 개요
 
 수업 완료 후 수업 내용을 복습하는 화면입니다. 튜터가 선택한 피드백 질문들을 순차적으로 풀면서 학습 내용을 확인합니다.

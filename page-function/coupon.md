@@ -3,7 +3,7 @@
 **라우트**: `/my-podo/coupons`
 **부모 화면**: My Podo
 **타입**: 풀스크린
-**Figma**: [🎨 마이포도/마이 쿠폰 디자인](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=15927-13261)
+**Figma**: [마이포도/마이 쿠폰 디자인](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=15927-13261)
 
 ## 개요
 
@@ -412,3 +412,8 @@ interface Coupon {
 | 날짜 | 작성자 | 변경 내용 |
 |------|--------|----------|
 | 2026-03-04 | Claude | 최초 작성 |
+
+## Figma 관련 화면
+
+- [웰컴백 쿠폰 팝업](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=4511-273)
+- [쿠폰 선택](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21515-15725)

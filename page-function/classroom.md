@@ -4,6 +4,8 @@
 **부모 화면**: 예약 목록 (`/reservation`)
 **타입**: 풀스크린 페이지 (Immersive)
 
+**Figma**: [수업 디자인](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21275-11149)
+
 ## 개요
 
 사용자가 실제 수업을 진행하는 화면입니다. Zoom 링크를 iframe으로 embed하여 수업에 참여하고, 강의 자료(비디오/오디오)를 재생할 수 있습니다.

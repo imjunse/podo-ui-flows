@@ -3,7 +3,7 @@
 **라우트**: `/subscribes/payment/[subscribeId]`
 **부모 화면**: 수업 탐색 (`/subscribes/tickets`, `/subscribes/tickets-v2`)
 **타입**: 풀스크린 페이지
-**Figma**: [🎨 카카오페이 결제 디자인](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21863-11683)
+**Figma**: [결제 디자인](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=16011-9763)
 
 ## 개요
 
@@ -594,3 +594,10 @@ CTA: [재시도]
 | 날짜 | 작성자 | 변경 내용 |
 |------|--------|----------|
 | 2026-03-04 | Claude | 최초 작성 |
+
+## Figma 관련 화면
+
+- [구독결제_등록된결제수단_카카오페이](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21863-11683)
+- [한 번에 결제_결제수단이 없는 경우](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21863-11571)
+- [구독결제_쿠폰이 있는 경우](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21515-15542)
+- [구독결제_쿠폰을 적용한 경우](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21515-15632)

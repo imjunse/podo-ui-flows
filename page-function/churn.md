@@ -4,6 +4,8 @@
 **부모 화면**: 내 플랜 관리
 **타입**: 풀스크린 플로우
 
+**Figma**: [마이포도/마이 포도 플랜/구독 해지하기 디자인](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=15927-10335)
+
 ## 개요
 
 사용자가 구독을 해지하는 전체 플로우를 관리하는 화면입니다. 해지 사유 수집, 만류 시도, 최종 확인 등의 단계를 포함합니다.
@@ -415,3 +417,12 @@ interface RetentionOffer {
 | 날짜 | 작성자 | 변경 내용 |
 |------|--------|----------|
 | 2026-03-04 | Claude | 최초 작성 |
+
+## Figma 관련 화면
+
+- [탈퇴_정규 레슨권 보유한 경우](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21853-11034)
+- [환불_환불 방어 불가능한 사유](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21853-10239)
+- [환불_환불 방어 가능한 사유_잔여 홀딩일이 남은 유저](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21852-8617)
+- [환불_환불 방어 가능한 사유_잔여 홀딩일이 남지 않은 유저](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21853-9431)
+- [환불_환불 불가능한 레슨권](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21852-8374)
+- [환불_미납금이 있는 경우](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21849-11858)

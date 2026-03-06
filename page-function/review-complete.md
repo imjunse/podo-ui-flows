@@ -4,6 +4,8 @@
 **부모 화면**: 수업 리뷰 (`/lessons/classroom/[classID]/review`)
 **타입**: 풀스크린
 
+**Figma**: [리뷰 완료 (복습) 디자인](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21498-8538)
+
 ## 개요
 
 복습 퀴즈를 완료한 후 표시되는 축하 화면입니다. 2초 대기 후 다음 단계로 전환되며, Feature Flag에 따라 NPS 서베이 또는 간단한 축하 메시지를 표시합니다. 사용자를 다음 레슨 예약으로 유도하는 것이 주요 목적입니다.

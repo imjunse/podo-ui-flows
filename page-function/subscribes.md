@@ -4,6 +4,8 @@
 **부모 화면**: Home, Bottom Tab Navigation
 **타입**: 메인 화면 (Bottom Tab)
 
+**Figma**: [수업 디자인](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21275-11149)
+
 ## 개요
 
 사용자가 수강 가능한 수업 코스들을 탐색하고 구매할 수 있는 화면입니다.

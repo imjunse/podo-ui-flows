@@ -4,6 +4,8 @@
 **부모 화면**: 결제 페이지 (`/subscribes/payment/[subscribeId]`)
 **타입**: 풀스크린 페이지
 
+**Figma**: [결제 디자인](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=16011-9763)
+
 ## 개요
 
 결제가 성공적으로 완료된 후 표시되는 완료 화면입니다.

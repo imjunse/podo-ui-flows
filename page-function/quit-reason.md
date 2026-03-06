@@ -4,6 +4,8 @@
 **부모 화면**: 구독 해지 플로우
 **타입**: 풀스크린
 
+**Figma**: [마이포도/마이 포도 플랜/구독 해지하기 디자인](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=15927-10335)
+
 ## 개요
 
 구독 해지 플로우 내에서 사용자로부터 해지 사유를 수집하는 화면입니다. 서비스 개선을 위한 중요한 피드백 수집 단계입니다.
@@ -402,3 +404,7 @@ trackEvent('churn_reasons_submitted', {
 | 날짜 | 작성자 | 변경 내용 |
 |------|--------|----------|
 | 2026-03-04 | Claude | 최초 작성 |
+
+## Figma 관련 화면
+
+- [간단설문](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21500-9007)

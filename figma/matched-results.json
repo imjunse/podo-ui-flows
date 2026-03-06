@@ -1,163 +1,322 @@
 [
   {
-    "mdName": "Home",
     "mdFile": "home.md",
     "figmaScreen": "홈-레슨권 비구매자",
-    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
-    "note": "Figma 화면: \"홈-레슨권 비구매자\" 찾아서 URL 업데이트 필요"
+    "figmaNodeId": "455:3797",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=455-3797",
+    "relatedScreens": [
+      {
+        "name": "홈-레슨권 구매자",
+        "nodeId": "16015:13992",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=16015-13992"
+      },
+      {
+        "name": "홈-체험레슨 구매자",
+        "nodeId": "16015:14501",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=16015-14501"
+      }
+    ]
   },
   {
-    "mdName": "Home (AI)",
-    "mdFile": "home.md",
-    "figmaScreen": "ai학습",
-    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
-    "note": "Figma 화면: \"ai학습\" 찾아서 URL 업데이트 필요"
-  },
-  {
-    "mdName": "수업 탐색",
     "mdFile": "subscribes.md",
     "figmaScreen": "수업",
-    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
-    "note": "Figma 화면: \"수업\" 찾아서 URL 업데이트 필요"
+    "figmaNodeId": "21275:11149",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21275-11149",
+    "relatedScreens": []
   },
   {
-    "mdName": "수강권 목록",
     "mdFile": "tickets.md",
     "figmaScreen": "레슨권 구매",
-    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
-    "note": "Figma 화면: \"레슨권 구매\" 찾아서 URL 업데이트 필요"
+    "figmaNodeId": "16011:8441",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=16011-8441",
+    "relatedScreens": []
   },
   {
-    "mdName": "체험 수업",
     "mdFile": "lessons-trial.md",
     "figmaScreen": "체험레슨 신청",
-    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
-    "note": "Figma 화면: \"체험레슨 신청\" 찾아서 URL 업데이트 필요"
+    "figmaNodeId": "455:3798",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=455-3798",
+    "relatedScreens": []
   },
   {
-    "mdName": "결제 페이지",
     "mdFile": "payment.md",
-    "figmaScreen": "구독결제_등록된결제수단_카카오페이",
-    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
-    "note": "Figma 화면: \"구독결제_등록된결제수단_카카오페이\" 찾아서 URL 업데이트 필요"
+    "figmaScreen": "결제",
+    "figmaNodeId": "16011:9763",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=16011-9763",
+    "relatedScreens": [
+      {
+        "name": "구독결제_등록된결제수단_카카오페이",
+        "nodeId": "21863:11683",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21863-11683"
+      },
+      {
+        "name": "한 번에 결제_결제수단이 없는 경우",
+        "nodeId": "21863:11571",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21863-11571"
+      },
+      {
+        "name": "구독결제_쿠폰이 있는 경우",
+        "nodeId": "21515:15542",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21515-15542"
+      },
+      {
+        "name": "구독결제_쿠폰을 적용한 경우",
+        "nodeId": "21515:15632",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21515-15632"
+      }
+    ]
   },
   {
-    "mdName": "결제 완료",
     "mdFile": "payment-success.md",
-    "figmaScreen": "마이포도/결제수단/결제수단 추가",
-    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
-    "note": "Figma 화면: \"마이포도/결제수단/결제수단 추가\" 찾아서 URL 업데이트 필요"
+    "figmaScreen": "결제",
+    "figmaNodeId": "16011:9763",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=16011-9763",
+    "relatedScreens": []
   },
   {
-    "mdName": "예약",
+    "mdFile": "payment-methods.md",
+    "figmaScreen": "마이포도/결제수단",
+    "figmaNodeId": "15927:13987",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=15927-13987",
+    "relatedScreens": [
+      {
+        "name": "마이포도/결제수단/결제수단 추가",
+        "nodeId": "15927:14373",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=15927-14373"
+      }
+    ]
+  },
+  {
     "mdFile": "reservation.md",
-    "figmaScreen": "예약 변경",
-    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
-    "note": "Figma 화면: \"예약 변경\" 찾아서 URL 업데이트 필요"
+    "figmaScreen": "예약",
+    "figmaNodeId": "4707:16463",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=4707-16463",
+    "relatedScreens": [
+      {
+        "name": "예약 변경",
+        "nodeId": "16015:13253",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=16015-13253"
+      },
+      {
+        "name": "예약_예약된 레슨 있음",
+        "nodeId": "21515:14902",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21515-14902"
+      },
+      {
+        "name": "M_예약_긴 시간 남았을 때",
+        "nodeId": "4707:18673",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=4707-18673"
+      },
+      {
+        "name": "M_예약_24시간 이내",
+        "nodeId": "4707:18802",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=4707-18802"
+      },
+      {
+        "name": "M_예약_1시간 이내",
+        "nodeId": "4707:18931",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=4707-18931"
+      },
+      {
+        "name": "M_예약_1분 이내",
+        "nodeId": "4707:19085",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=4707-19085"
+      },
+      {
+        "name": "예약_예약된 레슨 있음_수업 10분 전",
+        "nodeId": "21515:13402",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21515-13402"
+      },
+      {
+        "name": "예약_취소된 레슨 숨김",
+        "nodeId": "21515:13526",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21515-13526"
+      }
+    ]
   },
   {
-    "mdName": "정규 수업 목록",
     "mdFile": "lessons-regular.md",
-    "figmaScreen": "탈퇴_정규 레슨권 보유한 경우",
-    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
-    "note": "Figma 화면: \"탈퇴_정규 레슨권 보유한 경우\" 찾아서 URL 업데이트 필요"
+    "figmaScreen": "레슨",
+    "figmaNodeId": "455:3799",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=455-3799",
+    "relatedScreens": [
+      {
+        "name": "레슨 리스트",
+        "nodeId": "16015:10413",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=16015-10413"
+      }
+    ]
   },
   {
-    "mdName": "체험 수업 목록",
-    "mdFile": "lessons-trial.md",
-    "figmaScreen": "체험레슨 신청",
-    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
-    "note": "Figma 화면: \"체험레슨 신청\" 찾아서 URL 업데이트 필요"
-  },
-  {
-    "mdName": "AI 수업 목록",
     "mdFile": "lessons-ai.md",
     "figmaScreen": "ai학습",
-    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
-    "note": "Figma 화면: \"ai학습\" 찾아서 URL 업데이트 필요"
+    "figmaNodeId": "21242:6202",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21242-6202",
+    "relatedScreens": []
   },
   {
-    "mdName": "수업 진행",
     "mdFile": "classroom.md",
-    "figmaScreen": "예약_예약된 레슨 있음_수업 10분 전",
-    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
-    "note": "Figma 화면: \"예약_예약된 레슨 있음_수업 10분 전\" 찾아서 URL 업데이트 필요"
+    "figmaScreen": "수업",
+    "figmaNodeId": "21275:11149",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21275-11149",
+    "relatedScreens": []
   },
   {
-    "mdName": "수업 리뷰",
     "mdFile": "review.md",
     "figmaScreen": "복습",
-    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
-    "note": "Figma 화면: \"복습\" 찾아서 URL 업데이트 필요"
+    "figmaNodeId": "21498:8538",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21498-8538",
+    "relatedScreens": []
   },
   {
-    "mdName": "수업 리포트",
+    "mdFile": "review-complete.md",
+    "figmaScreen": "리뷰 완료 (복습)",
+    "figmaNodeId": "21498:8538",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21498-8538",
+    "relatedScreens": []
+  },
+  {
     "mdFile": "class-report.md",
     "figmaScreen": "잔여 수업",
-    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
-    "note": "Figma 화면: \"잔여 수업\" 찾아서 URL 업데이트 필요"
+    "figmaNodeId": "20604:11904",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=20604-11904",
+    "relatedScreens": []
   },
   {
-    "mdName": "AI Learning",
     "mdFile": "ai-learning.md",
     "figmaScreen": "ai학습",
-    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
-    "note": "Figma 화면: \"ai학습\" 찾아서 URL 업데이트 필요"
+    "figmaNodeId": "21242:6202",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21242-6202",
+    "relatedScreens": []
   },
   {
-    "mdName": "마이포도",
     "mdFile": "my-podo.md",
-    "figmaScreen": "마이포도/마이 포도 플랜",
-    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
-    "note": "Figma 화면: \"마이포도/마이 포도 플랜\" 찾아서 URL 업데이트 필요"
+    "figmaScreen": "마이포도",
+    "figmaNodeId": "7357:4378",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=7357-4378",
+    "relatedScreens": [
+      {
+        "name": "마이포도/프로필",
+        "nodeId": "15927:9909",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=15927-9909"
+      }
+    ]
   },
   {
-    "mdName": "쿠폰",
     "mdFile": "coupon.md",
     "figmaScreen": "마이포도/마이 쿠폰",
-    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
-    "note": "Figma 화면: \"마이포도/마이 쿠폰\" 찾아서 URL 업데이트 필요"
+    "figmaNodeId": "15927:13261",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=15927-13261",
+    "relatedScreens": [
+      {
+        "name": "웰컴백 쿠폰 팝업",
+        "nodeId": "4511:273",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=4511-273"
+      },
+      {
+        "name": "쿠폰 선택",
+        "nodeId": "21515:15725",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21515-15725"
+      }
+    ]
   },
   {
-    "mdName": "결제 수단",
-    "mdFile": "payment-methods.md",
-    "figmaScreen": "마이포도/결제수단/결제수단 추가",
-    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
-    "note": "Figma 화면: \"마이포도/결제수단/결제수단 추가\" 찾아서 URL 업데이트 필요"
-  },
-  {
-    "mdName": "결제 수단 등록",
-    "mdFile": "payment-methods.md",
-    "figmaScreen": "마이포도/결제수단/결제수단 추가",
-    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
-    "note": "Figma 화면: \"마이포도/결제수단/결제수단 추가\" 찾아서 URL 업데이트 필요"
-  },
-  {
-    "mdName": "내 플랜",
     "mdFile": "plan.md",
-    "figmaScreen": "마이포도/마이 포도 플랜/수강증 발급",
-    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
-    "note": "Figma 화면: \"마이포도/마이 포도 플랜/수강증 발급\" 찾아서 URL 업데이트 필요"
+    "figmaScreen": "마이포도/마이 포도 플랜",
+    "figmaNodeId": "21451:5669",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21451-5669",
+    "relatedScreens": [
+      {
+        "name": "마이포도/마이 포도 플랜/수강증 발급",
+        "nodeId": "15927:11084",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=15927-11084"
+      },
+      {
+        "name": "레슨권 연장",
+        "nodeId": "20588:7970",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=20588-7970"
+      },
+      {
+        "name": "레슨권 변경",
+        "nodeId": "21853:10805",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21853-10805"
+      },
+      {
+        "name": "위약금 조회",
+        "nodeId": "21853:10609",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21853-10609"
+      }
+    ]
   },
   {
-    "mdName": "공지사항",
     "mdFile": "notices.md",
     "figmaScreen": "마이포도/공지사항",
-    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
-    "note": "Figma 화면: \"마이포도/공지사항\" 찾아서 URL 업데이트 필요"
+    "figmaNodeId": "15927:12676",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=15927-12676",
+    "relatedScreens": []
   },
   {
-    "mdName": "해지",
     "mdFile": "churn.md",
     "figmaScreen": "마이포도/마이 포도 플랜/구독 해지하기",
-    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
-    "note": "Figma 화면: \"마이포도/마이 포도 플랜/구독 해지하기\" 찾아서 URL 업데이트 필요"
+    "figmaNodeId": "15927:10335",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=15927-10335",
+    "relatedScreens": [
+      {
+        "name": "탈퇴_정규 레슨권 보유한 경우",
+        "nodeId": "21853:11034",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21853-11034"
+      },
+      {
+        "name": "환불_환불 방어 불가능한 사유",
+        "nodeId": "21853:10239",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21853-10239"
+      },
+      {
+        "name": "환불_환불 방어 가능한 사유_잔여 홀딩일이 남은 유저",
+        "nodeId": "21852:8617",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21852-8617"
+      },
+      {
+        "name": "환불_환불 방어 가능한 사유_잔여 홀딩일이 남지 않은 유저",
+        "nodeId": "21853:9431",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21853-9431"
+      },
+      {
+        "name": "환불_환불 불가능한 레슨권",
+        "nodeId": "21852:8374",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21852-8374"
+      },
+      {
+        "name": "환불_미납금이 있는 경우",
+        "nodeId": "21849:11858",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21849-11858"
+      }
+    ]
   },
   {
-    "mdName": "해지 사유",
     "mdFile": "quit-reason.md",
     "figmaScreen": "마이포도/마이 포도 플랜/구독 해지하기",
-    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=TODO",
-    "note": "Figma 화면: \"마이포도/마이 포도 플랜/구독 해지하기\" 찾아서 URL 업데이트 필요"
+    "figmaNodeId": "15927:10335",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=15927-10335",
+    "relatedScreens": [
+      {
+        "name": "간단설문",
+        "nodeId": "21500:9007",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21500-9007"
+      }
+    ]
+  },
+  {
+    "mdFile": "selftest.md",
+    "figmaScreen": "온보딩",
+    "figmaNodeId": "21049:6218",
+    "figmaUrl": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21049-6218",
+    "relatedScreens": [
+      {
+        "name": "두번째 온보딩",
+        "nodeId": "21178:5942",
+        "url": "https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21178-5942"
+      }
+    ]
   }
 ]

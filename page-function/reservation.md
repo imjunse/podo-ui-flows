@@ -3,7 +3,7 @@
 **라우트**: `/booking` (Feature Flag: `migration_booking_react`)
 **부모 화면**: Home, 수업 탐색, 예약 목록
 **타입**: 풀스크린 페이지
-**Figma**: [🎨 예약 변경 디자인](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=16015-13253)
+**Figma**: [예약 디자인](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=4707-16463)
 
 ## 개요
 
@@ -490,3 +490,14 @@ CTA: [확인] → 시간 선택 화면으로 돌아감
 | 날짜 | 작성자 | 변경 내용 |
 |------|--------|----------|
 | 2026-03-04 | Claude | 최초 작성 |
+
+## Figma 관련 화면
+
+- [예약 변경](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=16015-13253)
+- [예약_예약된 레슨 있음](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21515-14902)
+- [M_예약_긴 시간 남았을 때](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=4707-18673)
+- [M_예약_24시간 이내](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=4707-18802)
+- [M_예약_1시간 이내](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=4707-18931)
+- [M_예약_1분 이내](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=4707-19085)
+- [예약_예약된 레슨 있음_수업 10분 전](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21515-13402)
+- [예약_취소된 레슨 숨김](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21515-13526)

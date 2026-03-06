@@ -3,7 +3,7 @@
 **라우트**: `/home` (Basic), `/home/ai` (Smart Talk)
 **부모 화면**: Login
 **타입**: 메인 화면 (Bottom Tab)
-**Figma**: [🎨 홈-레슨권 비구매자 디자인](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=455-3797)
+**Figma**: [홈-레슨권 비구매자 디자인](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=455-3797)
 
 ## 개요
 
@@ -383,3 +383,8 @@ graph TD
 |------|--------|----------|
 | 2026-03-04 | Claude | 템플릿 기반 초안 작성 |
 | 2026-03-04 | Claude | 추측 모달 제거, 실제 코드 기반 수정 완료 |
+
+## Figma 관련 화면
+
+- [홈-레슨권 구매자](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=16015-13992)
+- [홈-체험레슨 구매자](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=16015-14501)

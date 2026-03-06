@@ -4,6 +4,8 @@
 **부모 화면**: My Podo
 **타입**: 풀스크린
 
+**Figma**: [마이포도/공지사항 디자인](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=15927-12676)
+
 ## 개요
 
 포도 서비스의 공지사항을 확인할 수 있는 화면입니다. 시스템 점검, 이벤트, 정책 변경 등의 중요 공지를 제공합니다.

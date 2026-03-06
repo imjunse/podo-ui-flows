@@ -3,7 +3,7 @@
 **라우트**: `/tickets` 또는 `/my-podo/tickets`
 **부모 화면**: My Podo 또는 Home
 **타입**: 풀스크린
-**Figma**: [🎨 레슨권 구매 디자인](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=16011-8441)
+**Figma**: [레슨권 구매 디자인](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=16011-8441)
 
 ## 개요
 

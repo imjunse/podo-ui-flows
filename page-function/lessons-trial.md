@@ -4,6 +4,8 @@
 **부모 화면**: 수업 탐색 (`/subscribes`)
 **타입**: 메인 화면
 
+**Figma**: [체험레슨 신청 디자인](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=455-3798)
+
 ## 개요
 
 사용자가 선택한 언어의 체험 수업(Trial Lesson) 목록을 표시하는 화면입니다. 체험 수업은 레벨 테스트 역할을 하며, 각 등급(Grade)별로 하나의 수업 카드가 표시됩니다. 정규 수업과 달리 단일 카드 형식으로 제공됩니다.

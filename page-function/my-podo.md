@@ -4,6 +4,8 @@
 **부모 화면**: Bottom Tab Navigation
 **타입**: 메인 화면 (Bottom Tab)
 
+**Figma**: [마이포도 디자인](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=7357-4378)
+
 ## 개요
 
 포도 앱의 사용자 프로필, 수강권, 결제, 설정을 관리하는 허브 화면입니다. 사용자는 여기서 자신의 정보를 확인하고, 수강권 및 결제 관리, 각종 설정에 접근할 수 있습니다.
@@ -447,3 +449,7 @@ Page (Server Component)
 | 날짜 | 작성자 | 변경 내용 |
 |------|--------|----------|
 | 2026-03-04 | Claude | 코드 분석 기반 초안 작성 |
+
+## Figma 관련 화면
+
+- [마이포도/프로필](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=15927-9909)

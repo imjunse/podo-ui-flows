@@ -4,6 +4,8 @@
 **부모 화면**: 수업 탐색 (`/subscribes`)
 **타입**: 메인 화면
 
+**Figma**: [레슨 디자인](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=455-3799)
+
 ## 개요
 
 사용자가 선택한 레벨과 조건에 맞는 정규 수업 커리큘럼을 순차적으로 표시하는 화면입니다. 각 수업은 상태에 따라 다른 UI와 액션을 제공하며, 완료된 수업/예약된 수업/예약 가능한 수업 등을 구분하여 보여줍니다.
@@ -308,3 +310,7 @@ Zod 스키마: `lessonDetailSearchParamsSchema`
 | 날짜 | 작성자 | 변경 내용 |
 |------|--------|----------|
 | 2026-03-04 | junse | 최초 작성 |
+
+## Figma 관련 화면
+
+- [레슨 리스트](https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=16015-10413)
