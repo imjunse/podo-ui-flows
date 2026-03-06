@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PODO App - UX Flow Map</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { 
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f5f5f7; 
+    color: #1d1d1f;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Sticky Header */
+header {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    position: sticky; top: 0; z-index: 100;
+    padding: 20px 40px;
+}
+.header-top {
+    display: flex; align-items: center; justify-content: space-between;
+}
+header h1 { 
+    font-size: 22px; font-weight: 700; color: #1d1d1f;
+    letter-spacing: -0.5px;
+}
+.header-badge {
+    font-size: 12px; color: #86868b; font-weight: 500;
+    background: #f0f0f3; padding: 4px 12px; border-radius: 20px;
+}
+.nav { 
+    display: flex; gap: 6px; margin-top: 14px; flex-wrap: wrap;
+    overflow-x: auto; padding-bottom: 2px;
+}
+.nav-item {
+    padding: 7px 16px; border-radius: 100px; font-size: 13px; font-weight: 500;
+    background: transparent; color: #86868b; text-decoration: none;
+    transition: all 0.2s; white-space: nowrap;
+    border: 1px solid #e5e5e7;
+}
+.nav-item:hover, .nav-item.active { 
+    background: #1d1d1f; color: #fff; border-color: #1d1d1f;
+}
+
+/* Main */
+main { padding: 40px; max-width: 1600px; margin: 0 auto; }
+
+/* Flow Section */
+.flow-section {
+    margin-bottom: 64px;
+}
+.flow-header {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 8px;
+}
+.flow-number {
+    width: 32px; height: 32px; border-radius: 10px;
+    background: #6B5CE7; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 700; flex-shrink: 0;
+}
+.flow-section h2 {
+    font-size: 22px; font-weight: 700; color: #1d1d1f;
+    letter-spacing: -0.3px;
+}
+.flow-desc {
+    color: #86868b; font-size: 14px; margin-bottom: 24px;
+    margin-left: 46px;
+}
+
+/* Screen Strip */
+.screen-strip {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    overflow-x: auto;
+    padding: 16px 0 24px 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+.screen-strip::-webkit-scrollbar { height: 6px; }
+.screen-strip::-webkit-scrollbar-track { background: transparent; }
+.screen-strip::-webkit-scrollbar-thumb { background: #d1d1d6; border-radius: 3px; }
+
+/* Screen Card - Mobbin style */
+.screen-card {
+    flex-shrink: 0;
+    width: 240px;
+    text-decoration: none;
+    color: inherit;
+    scroll-snap-align: start;
+    transition: transform 0.25s ease;
+    cursor: default;
+}
+.screen-card:hover {
+    transform: translateY(-6px);
+}
+
+/* Phone Frame */
+.phone-frame {
+    width: 220px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 28px;
+    padding: 8px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04);
+    transition: box-shadow 0.25s ease;
+}
+.screen-card:hover .phone-frame {
+    box-shadow: 0 8px 32px rgba(107, 92, 231, 0.15), 0 0 0 1px rgba(107, 92, 231, 0.2);
+}
+
+.phone-screen {
+    width: 100%;
+    aspect-ratio: 9 / 19.5;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #f0f0f3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.phone-screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+}
+.no-img { 
+    color: #86868b; font-size: 13px;
+    display: flex; align-items: center; justify-content: center;
+    width: 100%; height: 100%;
+}
+
+/* Screen Label */
+.screen-label {
+    text-align: center;
+    margin-top: 14px;
+    padding: 0 4px;
+}
+.screen-name {
+    font-size: 13px; font-weight: 600; color: #1d1d1f;
+    line-height: 1.3; margin-bottom: 2px;
+}
+.screen-meta {
+    font-size: 11px; color: #86868b;
+}
+
+/* Arrow connector */
+.arrow-connector {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 2px;
+    margin-top: 180px;
+}
+
+/* Lightbox Overlay */
+.lightbox {
+    display: none;
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    justify-content: center; align-items: center;
+    cursor: zoom-out;
+}
+.lightbox.active { display: flex; }
+.lightbox-content {
+    max-width: 400px; max-height: 90vh;
+    border-radius: 32px; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    background: #fff; padding: 10px;
+}
+.lightbox-content img {
+    width: 100%; border-radius: 24px; display: block;
+}
+.lightbox-label {
+    color: #fff; text-align: center; margin-top: 20px;
+    font-size: 16px; font-weight: 600;
+}
+.lightbox-figma {
+    color: #6B5CE7; text-align: center; margin-top: 8px;
+    font-size: 13px; text-decoration: none;
+    display: inline-block;
+}
+.lightbox-figma:hover { text-decoration: underline; }
+.lightbox-info {
+    position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%);
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    text-align: center; padding: 40px; 
+    color: #86868b; font-size: 12px;
+    border-top: 1px solid #e5e5e7;
+    margin-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header { padding: 16px 20px; }
+    main { padding: 24px 20px; }
+    .screen-card { width: 200px; }
+    .phone-frame { width: 180px; }
+    .arrow-connector { margin-top: 140px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="header-top">
+        <h1>PODO App UX Flow</h1>
+        <span class="header-badge">30 screens &middot; 8 flows</span>
+    </div>
+    <nav class="nav">
+        <a href="#auth" class="nav-item">인증 & 온보딩</a>
+        <a href="#home" class="nav-item">홈 화면 (Bottom Tab)</a>
+        <a href="#subscription" class="nav-item">구독 & 결제</a>
+        <a href="#lesson" class="nav-item">수업 플로우</a>
+        <a href="#ai" class="nav-item">AI 학습</a>
+        <a href="#reservation" class="nav-item">예약 플로우</a>
+        <a href="#mypodo" class="nav-item">마이포도</a>
+        <a href="#churn" class="nav-item">해지 & 환불</a>
+    </nav>
+</header>
+
+<main>
+    <section class="flow-section" id="auth">
+        <div class="flow-header">
+            <div class="flow-number">1</div>
+            <h2>인증 & 온보딩</h2>
+        </div>
+        <div class="flow-desc">스플래시 → 로그인 → 온보딩 → 홈 진입</div>
+        <div class="screen-strip">
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/b1ec5b00-e6af-4d91-bdd7-930316948ea4" data-name="스플래쉬" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=19902-3896" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/b1ec5b00-e6af-4d91-bdd7-930316948ea4" alt="스플래쉬" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">스플래쉬</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/b245cd6f-be43-4c7c-8b61-66dcbf2f49e9" data-name="로그인" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21003-8491" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/b245cd6f-be43-4c7c-8b61-66dcbf2f49e9" alt="로그인" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">로그인</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/f759d92a-a3cc-4c61-a045-d76c5fae6c3b" data-name="온보딩" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21049-6283" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/f759d92a-a3cc-4c61-a045-d76c5fae6c3b" alt="온보딩" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">온보딩</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/9cbbe442-5eb6-4d08-9f3d-0824991a6bde" data-name="홈" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=1057-1820" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/9cbbe442-5eb6-4d08-9f3d-0824991a6bde" alt="홈" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">홈</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="flow-section" id="home">
+        <div class="flow-header">
+            <div class="flow-number">2</div>
+            <h2>홈 화면 (Bottom Tab)</h2>
+        </div>
+        <div class="flow-desc">비구매자·구매자·체험 홈 → 주요 탭 네비게이션</div>
+        <div class="screen-strip">
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/9cbbe442-5eb6-4d08-9f3d-0824991a6bde" data-name="홈 (비구매자)" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=1057-1820" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/9cbbe442-5eb6-4d08-9f3d-0824991a6bde" alt="홈 (비구매자)" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">홈 (비구매자)</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/d945cc21-a8bd-452b-8f44-9f5584db988d" data-name="홈 (구매자)" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=16015-14147" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/d945cc21-a8bd-452b-8f44-9f5584db988d" alt="홈 (구매자)" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">홈 (구매자)</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/36ad9c28-c6c6-4a9a-942b-2a69c509bd3c" data-name="홈 (체험)" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=16018-14713" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/36ad9c28-c6c6-4a9a-942b-2a69c509bd3c" alt="홈 (체험)" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">홈 (체험)</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/efdfe386-34f0-4517-b41b-9d1764ffd5a6" data-name="수업 탐색" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21275-12120" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/efdfe386-34f0-4517-b41b-9d1764ffd5a6" alt="수업 탐색" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">수업 탐색</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/ad364124-4496-4401-a6bf-635fc6ccf56f" data-name="예약" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21515-13282" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/ad364124-4496-4401-a6bf-635fc6ccf56f" alt="예약" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">예약</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/21b26d04-e25f-4876-b49f-8e478b01fe22" data-name="AI Learning" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21242-6604" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/21b26d04-e25f-4876-b49f-8e478b01fe22" alt="AI Learning" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">AI Learning</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/30e3ceeb-c334-4f91-a281-7e2e6ad3cea5" data-name="마이포도" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21510-10245" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/30e3ceeb-c334-4f91-a281-7e2e6ad3cea5" alt="마이포도" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">마이포도</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="flow-section" id="subscription">
+        <div class="flow-header">
+            <div class="flow-number">3</div>
+            <h2>구독 & 결제</h2>
+        </div>
+        <div class="flow-desc">수업 탐색 → 레슨권 구매 → 결제 완료</div>
+        <div class="screen-strip">
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/efdfe386-34f0-4517-b41b-9d1764ffd5a6" data-name="수업 탐색" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21275-12120" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/efdfe386-34f0-4517-b41b-9d1764ffd5a6" alt="수업 탐색" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">수업 탐색</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/44da0db2-7645-44ec-be89-7ef8b79133a8" data-name="레슨권 구매" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=13560-5233" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/44da0db2-7645-44ec-be89-7ef8b79133a8" alt="레슨권 구매" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">레슨권 구매</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/eaf37f20-a1df-47a1-a127-80dbffe59095" data-name="체험레슨 신청" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=740-8869" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/eaf37f20-a1df-47a1-a127-80dbffe59095" alt="체험레슨 신청" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">체험레슨 신청</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/08ed42ed-8ac2-48d5-a813-5f7bd1913762" data-name="결제" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=13560-5635" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/08ed42ed-8ac2-48d5-a813-5f7bd1913762" alt="결제" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">결제</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/218d37db-6461-49cb-aa51-f5bbc7149a5c" data-name="웰컴백 쿠폰" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=20588-7008" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/218d37db-6461-49cb-aa51-f5bbc7149a5c" alt="웰컴백 쿠폰" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">웰컴백 쿠폰</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="flow-section" id="lesson">
+        <div class="flow-header">
+            <div class="flow-number">4</div>
+            <h2>수업 플로우</h2>
+        </div>
+        <div class="flow-desc">레슨 리스트 → 예약 → 수업 진행 → 복습</div>
+        <div class="screen-strip">
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/909b4b1b-b7b9-4f94-beac-bf4e345ba814" data-name="레슨 리스트" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=15797-5260" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/909b4b1b-b7b9-4f94-beac-bf4e345ba814" alt="레슨 리스트" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">레슨 리스트</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/a028a745-e9b5-4c1b-bec6-3d164a88b793" data-name="레슨일정선택" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21510-10590" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/a028a745-e9b5-4c1b-bec6-3d164a88b793" alt="레슨일정선택" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">레슨일정선택</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/a7dae769-6a62-4b40-b5de-65cf45ff7714" data-name="수업 진행" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21275-12402" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/a7dae769-6a62-4b40-b5de-65cf45ff7714" alt="수업 진행" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">수업 진행</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/89633e86-3139-4bf6-b1c2-afa8995e15f0" data-name="복습" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21485-4654" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/89633e86-3139-4bf6-b1c2-afa8995e15f0" alt="복습" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">복습</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/f080eaa6-e936-4407-a682-33fa7628dd53" data-name="잔여 수업" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21035-5709" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/f080eaa6-e936-4407-a682-33fa7628dd53" alt="잔여 수업" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">잔여 수업</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="flow-section" id="ai">
+        <div class="flow-header">
+            <div class="flow-number">5</div>
+            <h2>AI 학습</h2>
+        </div>
+        <div class="flow-desc">AI 학습 홈 → 수업 → 복습</div>
+        <div class="screen-strip">
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/21b26d04-e25f-4876-b49f-8e478b01fe22" data-name="AI 학습" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21242-6604" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/21b26d04-e25f-4876-b49f-8e478b01fe22" alt="AI 학습" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">AI 학습</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/a7dae769-6a62-4b40-b5de-65cf45ff7714" data-name="수업" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21275-12402" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/a7dae769-6a62-4b40-b5de-65cf45ff7714" alt="수업" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">수업</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/89633e86-3139-4bf6-b1c2-afa8995e15f0" data-name="복습" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21485-4654" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/89633e86-3139-4bf6-b1c2-afa8995e15f0" alt="복습" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">복습</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="flow-section" id="reservation">
+        <div class="flow-header">
+            <div class="flow-number">6</div>
+            <h2>예약 플로우</h2>
+        </div>
+        <div class="flow-desc">예약 메인 → 변경 → 확정 → 수업 진행</div>
+        <div class="screen-strip">
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/ad364124-4496-4401-a6bf-635fc6ccf56f" data-name="예약 메인" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21515-13282" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/ad364124-4496-4401-a6bf-635fc6ccf56f" alt="예약 메인" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">예약 메인</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/483fe2d4-0917-4294-a5da-85e40f9fb1a1" data-name="예약 변경" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=16015-12700" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/483fe2d4-0917-4294-a5da-85e40f9fb1a1" alt="예약 변경" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">예약 변경</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/a028a745-e9b5-4c1b-bec6-3d164a88b793" data-name="예약된 레슨" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21510-10590" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/a028a745-e9b5-4c1b-bec6-3d164a88b793" alt="예약된 레슨" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">예약된 레슨</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/a7dae769-6a62-4b40-b5de-65cf45ff7714" data-name="수업 진행" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21275-12402" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/a7dae769-6a62-4b40-b5de-65cf45ff7714" alt="수업 진행" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">수업 진행</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="flow-section" id="mypodo">
+        <div class="flow-header">
+            <div class="flow-number">7</div>
+            <h2>마이포도</h2>
+        </div>
+        <div class="flow-desc">마이포도 → 프로필 · 플랜 · 쿠폰 · 결제수단 · 공지</div>
+        <div class="screen-strip">
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/30e3ceeb-c334-4f91-a281-7e2e6ad3cea5" data-name="마이포도" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21510-10245" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/30e3ceeb-c334-4f91-a281-7e2e6ad3cea5" alt="마이포도" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">마이포도</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/30795178-cab9-4af1-9b5b-6389e5a63374" data-name="프로필" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=15856-9448" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/30795178-cab9-4af1-9b5b-6389e5a63374" alt="프로필" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">프로필</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/5ab1338d-ac1d-4390-b88d-79bd73ba15ca" data-name="마이 플랜" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21451-5670" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/5ab1338d-ac1d-4390-b88d-79bd73ba15ca" alt="마이 플랜" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">마이 플랜</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/e73d2f88-c1a0-4166-97f5-856df0b93ab0" data-name="마이 쿠폰" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=15856-8039" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/e73d2f88-c1a0-4166-97f5-856df0b93ab0" alt="마이 쿠폰" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">마이 쿠폰</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/057f2da2-0035-4240-aab4-4a01ce09567d" data-name="결제수단" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=15856-8987" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/057f2da2-0035-4240-aab4-4a01ce09567d" alt="결제수단" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">결제수단</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/b1ba662d-1c1f-4a8c-9a0c-67339afad67b" data-name="공지사항" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=15856-9151" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/b1ba662d-1c1f-4a8c-9a0c-67339afad67b" alt="공지사항" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">공지사항</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="flow-section" id="churn">
+        <div class="flow-header">
+            <div class="flow-number">8</div>
+            <h2>해지 & 환불</h2>
+        </div>
+        <div class="flow-desc">마이 플랜 → 구독 해지 → 간단설문 → 레슨권 연장</div>
+        <div class="screen-strip">
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/5ab1338d-ac1d-4390-b88d-79bd73ba15ca" data-name="마이 플랜" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21451-5670" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/5ab1338d-ac1d-4390-b88d-79bd73ba15ca" alt="마이 플랜" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">마이 플랜</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/09905a46-cbc4-4ed6-9f2a-d95a4c2501b7" data-name="구독 해지" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=7362-5440" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/09905a46-cbc4-4ed6-9f2a-d95a4c2501b7" alt="구독 해지" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">구독 해지</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/b86180d9-623a-4a05-8da5-c6b416d11c69" data-name="간단설문" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=21500-9007" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/b86180d9-623a-4a05-8da5-c6b416d11c69" alt="간단설문" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">간단설문</div>
+                </div>
+            </div>
+            <div class="arrow-connector">
+                <svg width="36" height="24" viewBox="0 0 36 24">
+                    <path d="M0 12h30M24 5l8 7-8 7" stroke="#c7c7cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="screen-card" data-img="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/efb62951-3983-4169-944b-6fbb1a49b0a9" data-name="레슨권 연장" data-figma="https://www.figma.com/design/DUFbC6C797d9jW5HsjFh9S/-PODO--APP-DESIGN?node-id=20588-8009" onclick="openLightbox(this)">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/efb62951-3983-4169-944b-6fbb1a49b0a9" alt="레슨권 연장" loading="lazy"/>
+                    </div>
+                </div>
+                <div class="screen-label">
+                    <div class="screen-name">레슨권 연장</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    PODO UX Flow Map &middot; Generated from Figma API + podo-ui-flows repo
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <div style="display:flex;flex-direction:column;align-items:center;">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <img id="lb-img" src="" alt=""/>
+        </div>
+        <div class="lightbox-info">
+            <div class="lightbox-label" id="lb-name"></div>
+            <a class="lightbox-figma" id="lb-figma" href="" target="_blank">Figma에서 열기 ↗</a>
+        </div>
+    </div>
+</div>
+
+<script>
+// Smooth scroll for nav
+document.querySelectorAll('.nav-item').forEach(a => {
+    a.addEventListener('click', e => {
+        e.preventDefault();
+        const id = a.getAttribute('href').slice(1);
+        document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Update active nav
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+        a.classList.add('active');
+    });
+});
+
+// Intersection observer for active nav
+const sections = document.querySelectorAll('.flow-section');
+const navItems = document.querySelectorAll('.nav-item');
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            navItems.forEach(n => n.classList.remove('active'));
+            const id = entry.target.id;
+            document.querySelector(`.nav-item[href="#${id}"]`)?.classList.add('active');
+        }
+    });
+}, { threshold: 0.3, rootMargin: '-100px 0px' });
+sections.forEach(s => observer.observe(s));
+
+// Lightbox
+function openLightbox(card) {
+    const lb = document.getElementById('lightbox');
+    document.getElementById('lb-img').src = card.dataset.img;
+    document.getElementById('lb-name').textContent = card.dataset.name;
+    const link = document.getElementById('lb-figma');
+    link.href = card.dataset.figma;
+    lb.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closeLightbox(e) {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+});
+</script>
+
+</body>
+</html>
