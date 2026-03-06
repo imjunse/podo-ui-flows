@@ -198,6 +198,20 @@ main { padding: 40px; max-width: 1600px; margin: 0 auto; }
     position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%);
     text-align: center;
 }
+.lb-counter {
+    color: rgba(255,255,255,0.5); font-size: 12px; margin-top: 4px;
+}
+.lb-nav {
+    position: fixed; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.12); border: none; border-radius: 50%;
+    width: 52px; height: 52px; cursor: pointer; z-index: 1001;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+    backdrop-filter: blur(4px);
+}
+.lb-nav:hover { background: rgba(255,255,255,0.25); }
+.lb-prev { left: 24px; }
+.lb-next { right: 24px; }
 
 /* Footer */
 footer {
@@ -1162,15 +1176,22 @@ footer {
 
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-    <div style="display:flex;flex-direction:column;align-items:center;">
-        <div class="lightbox-content" onclick="event.stopPropagation()">
+    <button class="lb-nav lb-prev" onclick="event.stopPropagation(); navigateLightbox(-1)" aria-label="Previous">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div style="display:flex;flex-direction:column;align-items:center;" onclick="event.stopPropagation()">
+        <div class="lightbox-content">
             <img id="lb-img" src="" alt=""/>
         </div>
         <div class="lightbox-info">
             <div class="lightbox-label" id="lb-name"></div>
+            <div class="lb-counter" id="lb-counter"></div>
             <a class="lightbox-figma" id="lb-figma" href="" target="_blank">Figma에서 열기 ↗</a>
         </div>
     </div>
+    <button class="lb-nav lb-next" onclick="event.stopPropagation(); navigateLightbox(1)" aria-label="Next">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
 </div>
 
 <script>
@@ -1200,22 +1221,44 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.3, rootMargin: '-100px 0px' });
 sections.forEach(s => observer.observe(s));
 
-// Lightbox
-function openLightbox(card) {
-    const lb = document.getElementById('lightbox');
+// Lightbox with navigation
+const allCards = Array.from(document.querySelectorAll('.screen-card'));
+let currentIndex = -1;
+
+function showCard(index) {
+    const card = allCards[index];
+    if (!card) return;
+    currentIndex = index;
     document.getElementById('lb-img').src = card.dataset.img;
     document.getElementById('lb-name').textContent = card.dataset.name;
-    const link = document.getElementById('lb-figma');
-    link.href = card.dataset.figma;
-    lb.classList.add('active');
+    document.getElementById('lb-figma').href = card.dataset.figma;
+    document.getElementById('lb-counter').textContent = `${index + 1} / ${allCards.length}`;
+    document.querySelector('.lb-prev').style.opacity = index === 0 ? '0.3' : '1';
+    document.querySelector('.lb-next').style.opacity = index === allCards.length - 1 ? '0.3' : '1';
+}
+
+function openLightbox(card) {
+    currentIndex = allCards.indexOf(card);
+    showCard(currentIndex);
+    document.getElementById('lightbox').classList.add('active');
     document.body.style.overflow = 'hidden';
 }
+
+function navigateLightbox(dir) {
+    const next = currentIndex + dir;
+    if (next >= 0 && next < allCards.length) showCard(next);
+}
+
 function closeLightbox(e) {
     document.getElementById('lightbox').classList.remove('active');
     document.body.style.overflow = '';
 }
+
 document.addEventListener('keydown', e => {
+    if (!document.getElementById('lightbox').classList.contains('active')) return;
     if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') navigateLightbox(1);
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') navigateLightbox(-1);
 });
 </script>
 
